@@ -1,125 +1,263 @@
-\chapter{\LaTeX 模板配置与使用}
+\chapter{缺陷格子可能存在的位置与相对应的平铺方案}
 
+\section{骨牌大小k = 3时的情况}
+由\ref*{basic-theorem-1}有，此时棋盘的大小只可能为$(3a + 1) \times (3b + 2)$。
 
-\label{cha:sysu-thesis-latex-install-guide}
+在图\ref*{fig:k-order-staining-1}的基础上，我们对棋盘进行两种染色，即
 
-本部分内容将让你能够通过本\LaTeX 模板生成一份可用的pdf，并为后面修改源码撰写毕设做准备。
+\begin{table}[h]
+	\caption{3阶染色}
+	\label{fig:3-order-staining}
+	\begin{subtable}{.5\linewidth}
+		\centering
+		\caption{3阶染色-1}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			1        & 2        & 3        & 1        & 2        & $\cdots$ \\
+			\hline
+			2        & 3        & 1        & 2        & 3        & $\cdots$ \\
+			\hline
+			3        & 1        & 2        & 3        & 1        & $\cdots$ \\
+			\hline
+			1        & 2        & 3        & 1        & 2        & $\cdots$ \\
+			\hline
+			2        & 3        & 1        & 2        & 3        & $\cdots$ \\
+			\hline
+			$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\
+			\hline
+		\end{tabular}
+		\label{fig:3-order-staining-1}
+	\end{subtable}%
+	\begin{subtable}{.5\linewidth}
+		\centering
+		\caption{3阶染色-2}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			1        & 2        & 3        & 1        & 2        & $\cdots$ \\
+			\hline
+			3        & 1        & 2        & 3        & 1        & $\cdots$ \\
+			\hline
+			2        & 3        & 1        & 2        & 3        & $\cdots$ \\
+			\hline
+			1        & 2        & 3        & 1        & 2        & $\cdots$ \\
+			\hline
+			3        & 1        & 2        & 3        & 1        & $\cdots$ \\
+			\hline
+			$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\
+			\hline
+		\end{tabular}
+		\label{fig:3-order-staining-2}
+	\end{subtable}
+\end{table}
 
-首先，我们会展示最简单的方法：直接使用overleaf进行编写。然后，我们整理了不同环境下\LaTeX 环境的配置指南与不同写作工具的配置技巧，方便各位同学使用本\LaTeX 模板。最后，我们说明了如何开始编写自己的毕业论文（设计）。
+不妨设棋盘行数$m \equiv 1 (mod k)$，列数$n \equiv 2 (mod k)$，显然有$f(1) = f(2) = f(3) + 1$。
+故缺陷格子有且只有可能分别染色为1和染色为2，此时我们将两张图合并，并以以下规则重新染色：
+\begin{itemize}
+	\item 在\ref*{fig:3-order-staining-1}和\ref*{fig:3-order-staining-2}均染色为1的格子，在新图染色为1
+	\item 在\ref*{fig:3-order-staining-1}和\ref*{fig:3-order-staining-2}均染色为2的格子，在新图染色为2
+	\item 在\ref*{fig:3-order-staining-1}染色为1，\ref*{fig:3-order-staining-2}染色为2的格子，在新图染色为4
+	\item 在\ref*{fig:3-order-staining-1}染色为2，\ref*{fig:3-order-staining-2}染色为1的格子，在新图染色为5
+	\item 在\ref*{fig:3-order-staining-1}或\ref*{fig:3-order-staining-2}染色为3的格子，在新图染色为0
+\end{itemize}
 
+在此条件下重新染色后，棋盘为
 
-\section{使用Overleaf编写毕设}
-
-Overleaf\footnote{网址可见\url{https://www.overleaf.com/}}是一个在线的Latex文档协作平台。我们不需要配置任何环境，便能够在上面直接使用本模板进行写作。操作步骤如下：
-
-第一步，下载本项目压缩包（从\url{https://github.com/SYSU-SCC/sysu-thesis/releases}处下载即可），注意需要下载zip格式的压缩包。
-然后，我们在Overleaf上新建项目，并上传该压缩包，可参考\autoref{fig:overleaf-new-proj}。
-
-
-\begin{figure}[h]
+\begin{table}[h]
 	\centering
-	\includegraphics[width=0.2\textwidth]{image/chap03/overleaf-create-proj.jpg}
-	\includegraphics[width=0.7\textwidth]{image/chap03/overleaf-upload-proj.jpg}
-	\caption{在Overleaf上创建并上传压缩包。}
-	\label{fig:overleaf-new-proj}
-\end{figure}
+	\caption{3阶重染色}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		1        & 2        & 0        & 1        & 2        & 0        & $\cdots$ \\
+		\hline
+		0        & 0        & 4        & 0        & 0        & 4        & $\cdots$ \\
+		\hline
+		0        & 0        & 5        & 0        & 0        & 5        & $\cdots$ \\
+		\hline
+		1        & 2        & 0        & 1        & 2        & 0        & $\cdots$ \\
+		\hline
+		0        & 0        & 4        & 0        & 0        & 4        & $\cdots$ \\
+		\hline
+		0        & 0        & 5        & 0        & 0        & 5        & $\cdots$ \\
+		\hline
+		$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\
+		\hline
+	\end{tabular}
+	\label{fig:3-order-staining-last}
+\end{table}
 
-第二步，在Overleaf的菜单中调整编译工具为\texttt{xelatex}，可参考\autoref{fig:overleaf-config}。
+由于缺陷格子分别只能染色1和染色2，故在两种染色下缺陷格子都能需要处在颜色1或颜色2中，且必须分别在颜色1和颜色2，
+因此缺陷格子的可能性就缩小为以下2种情况之一
+\begin{itemize}
+	\item 分别处在\ref*{fig:k-order-staining-last}的1和2
+	\item 分别处在\ref*{fig:k-order-staining-last}的4和5
+\end{itemize}
 
-\begin{figure}[h]
+在这里我们给出一个定理，来辅助我们之后的证明
+\begin{theorem}
+	\label{basic-theorem-2}
+	对于$m \times n$的广义棋盘和$1 \times k$的骨牌，且$m \equiv 1 (mod k), n \equiv 2 (mod k)$，
+	如果存在$i \times j$的缺陷，$i \equiv 1 (mod k), j \equiv 2 (mod k), i \le m, j \le n$，
+	则该棋盘一定能被平铺
+\end{theorem}
+（待补充证明）
+
+由此定理，我们可以得到，当可以把两个缺陷组合成一个$i \times j$的缺陷，$i \equiv 1 (mod k), j \equiv 2 (mod k)$，那么$\forall m > i, \forall n > j$，$m \times n$的广义棋盘
+都可以被平铺。
+
+\subsection{在染色中分别处于4和5}
+
+由图，我们可以简单的写出4和5所对应的格子的坐标，
+
+\begin{itemize}
+	\item 4的坐标: $(3k_{41}, 3k_{42} + 2)$
+	\item 5的坐标: $(3k_{51}, 3k_{52} + 3)$
+\end{itemize}
+
+在这里我们直接给出$k_{41}=k_{51}, k_{42} = k_{52}$和$k_{41}=k_{51}, k_{42} = k_{52} + 1$时的平铺方案
+
+\begin{table}[h]
+	\caption{4-5染色}
+	\label{fig:3-order-staining-123}
+	\begin{subtable}{.5\linewidth}
+		\centering
+		\caption{4-5染色}
+		\centering
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			\multicolumn{3}{|c|}{} & \multirow{3}*{} & \multirow{3}*{}             \\
+			\cline{1-3}
+			\multirow{3}*          & \multirow{3}*   & 4                      &  & \\
+			\cline{3-3}
+			                       &                 & 5                      &  & \\
+			\cline{3-5}
+			                       &                 & \multicolumn{3}{|c|}{}      \\
+			\hline
+		\end{tabular}
+		\label{fig:3-order-staining-12}
+	\end{subtable}%
+	\begin{subtable}{.5\linewidth}
+		\centering
+		\caption{5-4染色}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			\multicolumn{3}{|c|}{} & \multirow{3}*{} & \multirow{3}*{}                                            \\
+			\cline{1-3}
+			\multicolumn{3}{|c|}{} &                 &                                                            \\
+			\cline{1-3}
+			\multirow{3}*{}        & \multirow{3}*{} & 5                      &                 &                 \\
+			\cline{3-5}
+			                       &                 & \multicolumn{3}{|c|}{}                                     \\
+			\cline{3-5}
+			                       &                 & 4                      & \multirow{3}*{} & \multirow{3}*{} \\
+			\cline{1-3}
+			\multicolumn{3}{|c|}{} &                 &                                                            \\
+			\cline{1-3}
+			\multicolumn{3}{|c|}{} &                 &                                                            \\
+			\hline
+		\end{tabular}
+		\label{fig:3-order-staining-22}
+	\end{subtable}
+\end{table}
+
+\section{骨牌大小k > 3时的情况}
+
+\begin{table}[h]
+	\caption{k阶染色}
+	\label{fig:k-order-staining}
+	\begin{subtable}{.5\linewidth}
+		\centering
+		\caption{k阶正染色}
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			1        & 2        & 3        & $\cdots$ & k        & 1        & $\cdots$ \\
+			\hline
+			2        & 3        & 4        & $\cdots$ & 1        & 2        & $\cdots$ \\
+			\hline
+			3        & 4        & 5        & $\cdots$ & 2        & 3        & $\cdots$ \\
+			\hline
+			$\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\ddots$ & $\ddots$ & $\cdots$ \\
+			\hline
+			k        & 1        & 2        & $\cdots$ & k-1      & k        & $\cdots$ \\
+			\hline
+			1        & 2        & 3        & $\cdots$ & k        & 1        & $\cdots$ \\
+			\hline
+			$\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$ & $\ddots$ \\
+			\hline
+		\end{tabular}
+		\label{fig:k-order-staining-1}
+	\end{subtable}%
+	\begin{subtable}{.5\linewidth}
+		\centering
+		\caption{k阶染色-逆}
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			1        & 2        & 3        & $\cdots$ & k        & 1        & $\cdots$ \\
+			\hline
+			k        & 1        & 2        & $\cdots$ & k-1      & k        & $\cdots$ \\
+			\hline
+			k-1      & k        & 1        & $\cdots$ & k-2      & k-1      & $\cdots$ \\
+			\hline
+			$\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\ddots$ & $\ddots$ & $\cdots$ \\
+			\hline
+			2        & 3        & 4        & $\cdots$ & 1        & 2        & $\cdots$ \\
+			\hline
+			1        & 2        & 3        & $\cdots$ & k        & 1        & $\cdots$ \\
+			\hline
+			$\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$ & $\ddots$ \\
+			\hline
+		\end{tabular}
+		\label{fig:k-order-staining-2}
+	\end{subtable}
+\end{table}
+
+
+在k>4的情况下，我们仍然假设$m \equiv 1 (mod k), n \equiv 2 (mod k)$，我们可以给出以下引理。
+\begin{theorem}
+	\label{basic-theorem-3}
+	当$m \times n$的缺陷两格广义棋盘可被$1 \times k$大小的骨牌平铺时，若$k \ge 4$，则缺陷格子分别只可能在坐标$(kx_1 + 1, ky_1 + 1)$和$(kx_2 + 1, ky_2 + 2)$处。
+\end{theorem}
+\begin{proof}
+	我们不妨令坐标为$(1, 1)$和坐标为$(1, 2)$的格子染色为颜色1和颜色2，由引理？我们可以得知，我们只能挖去在所有染色组合中，均被染色为1或染色2的格子，再由定理？得知，坐标$(kx_1 + 1, ky_1 + 1)$和$(kx_2 + 1, ky_2 + 2)$处的格子在所有染色情况下，均会被染色成颜色1和颜色2，缺陷格子可以坐标$(kx_1 + 1, ky_1 + 1)$和$(kx_2 + 1, ky_2 + 2)$处。
+
+	接下来我们证明，当坐标不是$(kx_1 + 1, ky_1 + 1)$和$(kx_2 + 1, ky_2 + 2)$时，均存在某种染色方案，使得该坐标染色既不是1也不是2，则定理得证。
+
+
+
+	基于\ref{fig:k-order-staining-1},不妨把$(1, j)$染色为j， $(1, j), j \neq 1 or 2$时，该格子已经不是染色为1或2，故第一行的已排除。
+	对于第1列和第2列且不为第一行时，当格子在\ref{fig:k-order-staining-1}中为2时，在\ref{fig:k-order-staining-2}为k，当格子在\ref{fig:k-order-staining-1}为1时，在\ref{fig:k-order-staining-2}为3，故第一列和第二列也已排除。
+
+	对于$(i, j), i > 1, j > 2$，当格子在\ref{fig:k-order-staining-1}中为1时，由于$k \ge 4$，我们考虑第j列的元素，故$[2, k]$共计k-1个元素中，排除染色为1或者2的元素，还剩下$k - 1 - 2 = k-3$个元素，由于$k \ge 4$，故$k-3 \ge 1$，至少存在一个元素满足条件，染色为非1或2，且不在第一行，记为第k个元素。交换第i行和第j行后，这种染色也是满足条件的，但是在新染色中，$(i,j)$染色既不为1也不为2，故$(i, j)$也不能是格子。
+
+	证毕。
+
+\end{proof}
+
+
+因此类似k=3的情况，我们只需考虑像这样的染色
+
+\begin{table}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{image/chap03/overleaf-config.jpg}
-	\caption{在Overleaf上调整编译工具}
-	\label{fig:overleaf-config}
-\end{figure}
+	\caption{k阶重染色}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|}
+		\hline
+		1        & 2        & 0        & $\cdots$ & 0        & 1        & 2        & $\cdots$ \\
+		\hline
+		0        & 0        & 0        & $\cdots$ & 0        & 0        & 0        & $\cdots$ \\
+		\hline
+		0        & 0        & 0        & $\cdots$ & 0        & 0        & 0        & $\cdots$ \\
+		\hline
+		$\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\
+		\hline
+		0        & 0        & 0        & $\cdots$ & 0        & 0        & 0        & $\cdots$ \\
+		\hline
+		1        & 2        & 0        & $\cdots$ & 0        & 1        & 2        & $\cdots$ \\
+		\hline
+		0        & 0        & 0        & $\cdots$ & 0        & 0        & 0        & $\cdots$ \\
+		\hline
+		$\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\
+		\hline
+	\end{tabular}
+	\label{fig:k-order-staining-last}
+\end{table}
 
-
-第三步，点击编译，得到本pdf，可以开始修改pdf了！最终可见\autoref{fig:overleaf-example}。
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.9\textwidth]{image/chap03/overleaf-example.jpg}
-	\caption{Overleaf使用例子}
-	\label{fig:overleaf-example}
-\end{figure}
-
-
-
-\section{编译环境配置}
-
-编译环境配置相对来说比较简单，下载Tex Live2020并如同一般的程序一样安装即可。
-
-\subsection{编译环境配置：Window篇}
-
-在\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/}上下载Tex Live2020并参考教程\footnote{可以参考\url{https://zhuanlan.zhihu.com/p/58811994}}安装即可。
-
-\subsection{编译环境配置：Linux篇}
-
-在\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/}上下载Tex Live2020并参考教程\footnote{可以参考\url{https://zhuanlan.zhihu.com/p/55894177}}安装即可。
-
-
-\subsection{编译环境配置：MacOS篇}
-
-在MacOS上配置Latex的环境，这里我们使用的是MacTex。
-
-\begin{enumerate}
-	\item \url{https://www.tug.org/mactex/}下载MacTex安装。
-	\item 安装步骤：不详细展开，按照图形界面点击即可, 傻瓜式安装。
-\end{enumerate}
-
-TIPS：MacTex文件比较大，有2G多，介意的话可以选择MacTex\_Basic包，只有100M以内，但是如果安装MacTex\_Basic，后期可能会遇到各种缺包的问题。
-
-
-安装完成之后，可以简单测试一下安装是否成功。如可以查看Texshop应用是否安装好，或者在命令行测试一下\texttt{xelatex}命令是否可用。
-
-\section{写作环境配置}
-
-不同的写作工具对应不同的写作环境。这里我们给出几个工具的配置例子以供参考。
-
-\subsection{模板编译流程}
-
-由于\LaTeX 的限制，本模板需要经过四次编译才能生成完整的论文：
-
-\begin{enumerate}
-	\item 先使用xelatex编译一次
-	\item 再使用bibtex编译一次
-	\item 然后使用xelatex编译两次
-\end{enumerate}
-
-本编译流程已经写在Makefile中，修改模板源码后只需要执行\texttt{make pdf}即可按照该流程进行编译并生成最终的pdf。
-
-
-
-\subsection{写作环境配置：Visual Studio Code}
-
-Visual Studio Code是微软公司推出的轻量代码编辑器，我们可以做一些简单的配置，便可以用该编辑器修改我们的\LaTeX 模板，并实现一键编译。
-
-\begin{enumerate}
-	\item 安装 Visual Studio Code。
-	\item 安装 LaTeX Workshop 插件。
-\end{enumerate}
-
-本项目的\texttt{.vscode/setting.json}下已经包含了与前面所述编译流程相同的配置。正常配置下，每次修改模板源码后按下保存（Ctrl+S），就能够自动进行编译产生pdf。效果图如\autoref{fig:vscode-example}所示。
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\linewidth]{image/chap03/vscode-example.png}
-	\caption{vscode配置好后的样例}
-	\label{fig:vscode-example}
-\end{figure}
-
-
-\section{如何开始写毕业论文（设计）}
-
-首先将所有个人信息，包括学号、姓名、专业、论文题目等，在\texttt{./docs/info.tex}中逐项进行更新。
-
-然后我们再编辑\texttt{./docs/abstract.tex}补充论文摘要。
-
-到了论文主体部分，我们可以自行编辑\texttt{./docs/chap01.tex}，\texttt{./docs/chap02.tex}等文件进行编辑。如果章数不够，可以自行修改\texttt{main.tex}增加新的章节。
-
-当论文主体编写完成后，我们再编辑\texttt{./docs/ack.tex}作为论文致谢。
-
-
-% 首先将个人信息写到\texttt{./docs/info.tex}中。
+其中染色1的格子的坐标为$(kx_1 + 1, ky_1 + 1)$，染色2的格子为$(kx_2 + 1, ky_2 + 2)$ 
