@@ -22,7 +22,7 @@
 我们给出以下定理，来规整棋盘的大小
 \begin{theorem}
     \label{basic-theorem-1}
-    当$m \times n$的缺陷两格广义棋盘可被$1 \times k$大小的骨牌平铺时，一定满足$m \equiv 1 (mod k), n \equiv 2 (mod k)$
+    当$m \times n$的缺陷两格广义棋盘可被$1 \times k$大小的骨牌平铺时，一定满足$m \equiv 1 (mod k), n \equiv 2 (mod k)$。
 \end{theorem}
 
 \begin{proof}
@@ -85,6 +85,7 @@
         \item 条件1: $\exists p \in [0, k), st. f(p) = f(x) + 2, x \neq p , x \in [0, k)$
         \item 条件2: $\exists p_1, p_2 \in [0, k), st. f(p_1) = f(p_2) = f(x) + 1, x \neq p_1 \neq p_2, x \in [0, k)$
     \end{itemize}
+
     若挖去两格后，模块D仍然存在，此时分情况讨论：
 
     \begin{enumerate}
@@ -104,3 +105,9 @@
     
     所以挖去两格后，若模块D仍然存在，则所有条件均矛盾，故模块D不存在，即此时$m_1 = 1, n_1 = 2$，证毕。
 \end{proof}
+
+因此，对于我们已经规整好了棋盘的规模，并把问题转化如下
+
+对于大小为$1 \times k$的骨牌，我们考虑缺陷两格的$m \times n$的棋盘，其中$m \equiv 1 (mod k), n \equiv 2 (mod k)$，哪些棋盘可以被平铺。
+
+\clearpage
