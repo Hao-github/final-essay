@@ -1,7 +1,39 @@
 \chapter{缺陷格子可能存在的位置与相对应的平铺方案}
 
 \section{骨牌大小k = 3时的情况}
-由\ref*{basic-theorem-1}有，此时棋盘的大小只可能为$(3a + 1) \times (3b + 2)$。
+由\ref*{basic-theorem-1}有，此时棋盘的大小只可能为$(3x_m + 1) \times (3x_n + 2)$，不妨假设缺陷格子的坐标分别为$(i_1, j_1), (i_2, j_2)$。
+
+在这里我们给出一个定理，来辅助我们之后的证明
+
+\begin{theorem}
+	\label{basic-theorem-2}
+	对于$m \times n$的广义棋盘和$1 \times k$的骨牌，且$m \equiv 1 (mod k), n \equiv 2 (mod k)$，
+	记某格子的坐标为$(i, j)$，意味着某格子处于第i行第j列，则如果存在$i \times j$的缺陷C，$i \equiv 1 (mod k), j \equiv 2 (mod k), i \le m, j \le n$，
+	且棋盘的左上角和右下角的格子坐标分别为$(3k_{11} + 1, 3k_{12} + 1)$，$(3k_{21} + 1, 3k_{22} + 2)$，
+	则该棋盘一定能被平铺
+\end{theorem}
+\begin{proof}
+	当存在这样的缺陷时，我们可以把棋盘分成如\ref*{fig:nine-separate}的9个区域，分别如图所示，由\ref*{basic-lemma-1}，可得除了缺陷C外的8个区域均可被$1 \times k$的骨牌平铺，
+	而中央的缺陷C不需要被平铺，故此时整个棋盘已经可以被平铺，证毕。
+
+	\begin{table}[h]
+		\centering
+		\caption{对棋盘的9划分}
+		\begin{tabular}{|c|c|c|}
+
+			\hline
+			$3k_{12} \times 3k_{11}$               & $(3k_{22} - 3k_{12} + 2)\times 3k_{11}$  & $3k_{22} \times 3k_{11}$                   \\
+			\hline
+			$3k_{12} \times (3k_{21}-3k_{11} + 1)$ & $C: i \times j$                          & $3k_{22} \times (3k_{21}-3k_{11} + 1 + 1)$ \\
+			\hline
+			$3k_{12} \times 3k_{21}$               & $3 (k_{22} - k_{12}) + 2 \times 3k_{21}$ & $3k_{22} \times 3k_{21}$                   \\
+			\hline
+		\end{tabular}
+		\label{fig:nine-separate}
+	\end{table}
+\end{proof}
+
+因此根据\ref*{basic-theorem-2}，我们可以得把问题转化为：对于某个棋盘，他的两个缺陷可以组合成一个满足\ref*{basic-theorem-2}中条件的$i \times j$缺陷，那么该棋盘可以被平铺。
 
 在图\ref*{fig:k-order-staining-1}的基础上，我们对棋盘进行两种染色，即
 
@@ -50,18 +82,10 @@
 	\end{subtable}
 \end{table}
 
-不妨设棋盘行数$m \equiv 1 (mod k)$，列数$n \equiv 2 (mod k)$，记$f(x)$为染色为x的格子的数目，显然有$f(1) = f(2) = f(3) + 1$。
+不妨设棋盘行数$m \equiv 1 (mod 3)$，列数$n \equiv 2 (mod 3)$，记$f(x)$为染色为x的格子的数目，显然有$f(1) = f(2) = f(3) + 1$。
 
-因此该棋盘可被平铺的充分条件为缺陷的两个格子分别落在染色1和染色2的位置，此时我们将两张图合并，并以以下规则重新染色：
-\begin{itemize}
-	\item 在\ref*{fig:3-order-staining-1}和\ref*{fig:3-order-staining-2}均染色为1的格子，在新图染色为1
-	\item 在\ref*{fig:3-order-staining-1}和\ref*{fig:3-order-staining-2}均染色为2的格子，在新图染色为2
-	\item 在\ref*{fig:3-order-staining-1}染色为1，\ref*{fig:3-order-staining-2}染色为2的格子，在新图染色为4
-	\item 在\ref*{fig:3-order-staining-1}染色为2，\ref*{fig:3-order-staining-2}染色为1的格子，在新图染色为5
-	\item 在\ref*{fig:3-order-staining-1}或\ref*{fig:3-order-staining-2}染色为3的格子，在新图染色为0
-\end{itemize}
-
-在此条件下重新染色后，棋盘为
+记$P(i, j) = \left\{a, b\right\}$, 意味着在坐标为$(i, j)$在\ref*{fig:3-order-staining-1}和\ref*{fig:3-order-staining-2}分别染色为$a, b$，
+并据此按照以下规则重新染色得到\ref*{fig:3-order-staining-last}。
 
 \begin{table}[h]
 	\centering
@@ -86,50 +110,13 @@
 	\label{fig:3-order-staining-last}
 \end{table}
 
-由于在所有染色方案中，缺陷的格子都需要落在染色1和染色2上，因此我们可以进一步排除缺陷格子的可能所在的位置
+而该棋盘可被平铺的充分条件为缺陷的两个格子分别落在染色1和染色2的位置，意味着如果棋盘可以被平铺，则只有以下两种情况
+
 \begin{itemize}
-	\item 当一个缺陷格子在\ref*{fig:3-order-staining-1}和\ref*{fig:3-order-staining-2}都染色为1，
-	      另一个缺陷格子在\ref*{fig:3-order-staining-1}和\ref*{fig:3-order-staining-2}都染色为2时，他们将分别在\ref*{fig:3-order-staining-last}中染色为1和染色为2，因此如果
-	      该棋盘可以被平铺，则缺陷格子必然分别落在\ref*{fig:3-order-staining-last}的染色1和染色2处。
-
-	\item 当一个缺陷格子在\ref*{fig:3-order-staining-1}染色为1，在\ref*{fig:3-order-staining-2}染色为2，
-	      另一个缺陷格子在\ref*{fig:3-order-staining-1}染色为2，\ref*{fig:3-order-staining-2}染色为1时，他们将分别在\ref*{fig:3-order-staining-last}中染色为4和染色为5，因此如果
-	      该棋盘可以被平铺，则缺陷格子必然分别落在\ref*{fig:3-order-staining-last}的染色4和染色5处。
+	\item $P(i_1, j_1) = \left\{2, 2\right\}, P(i_2, j_2) = \left\{2, 2\right\}$，即在\ref*{fig:3-order-staining-last}中分别位于染色1和染色2处
+	\item $P(i_1, j_1) = \left\{1, 2\right\}, P(i_2, j_2) = \left\{2, 1\right\}$，即在\ref*{fig:3-order-staining-last}中分别位于染色4和染色5处
 \end{itemize}
-如此我们便只需要考虑两种情况。
 
-在这里我们给出一个定理，来辅助我们之后的证明
-\begin{theorem}
-	\label{basic-theorem-2}
-	对于$m \times n$的广义棋盘和$1 \times k$的骨牌，且$m \equiv 1 (mod k), n \equiv 2 (mod k)$，
-	记某格子的坐标为$(i, j)$，意味着某格子处于第i行第j列，则如果存在$i \times j$的缺陷C，$i \equiv 1 (mod k), j \equiv 2 (mod k), i \le m, j \le n$，
-	且棋盘的左上角和右下角的格子坐标分别为$(3k_{11} + 1, 3k_{12} + 1)$，$(3k_{21} + 1, 3k_{22} + 2)$，
-	则该棋盘一定能被平铺
-\end{theorem}
-\begin{proof}
-	当存在这样的缺陷时，我们可以把棋盘分成如\ref*{fig:nine-separate}的9个区域，分别如图所示，由\ref*{basic-lemma-1}，可得除了缺陷C外的8个区域均可被$1 \times k$的骨牌平铺，
-	而中央的缺陷C不需要被平铺，故此时整个棋盘已经可以被平铺，证毕。
-
-	\begin{table}[h]
-		\centering
-		\caption{对棋盘的9划分}
-		\begin{tabular}{|c|c|c|}
-
-			\hline
-			$3k_{12} \times 3k_{11}$               & $(3k_{22} - 3k_{12} + 2)\times 3k_{11}$  & $3k_{22} \times 3k_{11}$                   \\
-			\hline
-			$3k_{12} \times (3k_{21}-3k_{11} + 1)$ & $C: i \times j$                          & $3k_{22} \times (3k_{21}-3k_{11} + 1 + 1)$ \\
-			\hline
-			$3k_{12} \times 3k_{21}$               & $3 (k_{22} - k_{12}) + 2 \times 3k_{21}$ & $3k_{22} \times 3k_{21}$                   \\
-			\hline
-		\end{tabular}
-		\label{fig:nine-separate}
-	\end{table}
-\end{proof}
-
-
-
-因此根据\ref*{basic-theorem-2}，我们可以得把问题转化为：对于某个棋盘，他的两个缺陷可以组合成一个满足\ref*{basic-theorem-2}中条件的$i \times j$缺陷，那么该棋盘可以被平铺。
 \subsection{在染色中分别处于4和5}
 
 由图，我们可以简单的写出4和5所对应的格子的坐标，
@@ -185,18 +172,18 @@
 \end{table}
 
 \begin{itemize}
-
 	\item 当$k_{52} \ge k_{42}$时，有如\ref*{fig:4-5-painting}一样的划分，
 	      此时左上角坐标为$(3k_{41} + 1, 3k_{42} - 2)$，右下角坐标为$(3k_{51} + 4, 3k_{52} + 2)$。
 	\item 当$k_{52} < k_{42}$时，有如\ref*{fig:5-4-painting}一样的划分，
 	      此时左上角坐标为$(3k_{51} + 1, 3k_{52} - 2)$，右下角坐标为$(3k_{41} + 4, 3k_{42} + 2)$。
 \end{itemize}
 
-由\ref*{basic-lemma-1}可得，无论如何，所有区块均可被$1 \times 3$的骨牌平铺，也就等价于，这两个缺陷可以组合成一个大小为$(3k{52} - 3k_{42} + 4) \times (3k_{51} - 3k_{41} + 5)$大小的缺陷，
-由\ref*{basic-theorem-2}，当缺陷分别处在染色4和染色5的位置时，该棋盘可被平铺。
+由\ref*{basic-lemma-1}可得，无论如何，所有区块均可被$1 \times 3$的骨牌平铺，也就等价于，这两个缺陷可以组合成一个大小为$(3k_{52} - 3k_{42} + 4) \times (3k_{51} - 3k_{41} + 5)$大小的缺陷，
+并且角落坐标满足\ref*{basic-theorem-2}中的条件。因此由\ref*{basic-theorem-2}，当缺陷分别处在染色4和染色5的位置时，无论缺陷怎么分布，该缺陷棋盘都可被平铺。
 
 \subsection{在染色中分别处于1和2}
-同上述情况，我们可以写出颜色1和颜色2所在的方格坐标。
+
+同在染色中处于4和5的情况一样，我们可以写出颜色1和颜色2所在的方格坐标。
 \begin{itemize}
 	\item 1的坐标: $(3k_{11} + 1, 3k_{12} + 1)$
 	\item 2的坐标: $(3k_{21} + 1, 3k_{22} + 2)$
@@ -227,12 +214,12 @@
 		\hline
 		\multicolumn{2}{|c|}{\multirow{3}{*}{$(3k_{21} - 3k_{11}) \times 1$}} & 2 & \multicolumn{4}{|c|}{$1 \times  (3k_{12} - 3k_{22})$}                                                                                 \\
 		\cline{3-7}
-																			  &   & \multicolumn{3}{|c|}{\multirow{2}{*}{...}}            & \multicolumn{2}{|c|}{\multirow{3}{*}{$(3k_{21} - 3k_{11}) \times 1$}}         \\
-																			  &   &                                                       &                                                                       &  &  & \\
+		                                                                      &   & \multicolumn{3}{|c|}{\multirow{2}{*}{...}}            & \multicolumn{2}{|c|}{\multirow{3}{*}{$(3k_{21} - 3k_{11}) \times 1$}}         \\
+		                                                                      &   &                                                       &                                                                       &  &  & \\
 		\cline{1-5}
 		\multicolumn{4}{|c|}{$1 \times  (3k_{12} - 3k_{22})$}                 & 1 &                                                       &                                                                               \\
 		\hline
-	\label{fig:2-1-painting-1}
+		\label{fig:2-1-painting-1}
 	\end{tabular}
 \end{table}
 
@@ -240,9 +227,12 @@
 	\item 当$k_{22} \ge k_{12}$时，有如\ref*{fig:1-2-painting}的区域划分，此时左上角坐标为$(3k_{11} + 1, 3k_{12} + 1)$，右下角坐标为$(3k_{21} + 1, 3k_{22} + 2)$。
 	\item 当$k_{22} < k_{12}$时，将再次有以下分类
 	      \begin{itemize}
-		      \item 当不处于同一行时，即$k_{21} > k_{11}$，有如\ref*{fig:2-1-painting-1}的区域划分，左上角坐标为$(3k_{21} + 1, 3k_{22} + 1)$，右下角坐标为$(3k_{11} + 1, 3k_{22} + 2)$
-		      \item 当处于同一行且不在边界上时，有以下区域划分，由\ref*{basic-lemma-1}得，此时棋盘可被平铺
-		      \item 当都处在边界上时，我们称为棘手情况，把它放在下一节讨论
+		      \item 当缺陷不处于同一行时，即$k_{21} > k_{11}$，有如\ref*{fig:2-1-painting-1}的区域划分，左上角坐标为$(3k_{21} + 1, 3k_{22} + 1)$，右下角坐标为$(3k_{11} + 1, 3k_{22} + 2)$
+		      \item 当缺陷处于同一行且不在边界上时，有$m \ge 7$，当$n = 5$时，穷举得到无解，当$n \ge 8$，
+		            则当$k_{12} - k_{22} = 1$时，存在区域划分，左上角坐标为$(3k_{21}- 2, 3k_{22} + 1)$，右下角坐标为$(3k_{11} + 1, 3k_{22} + 2)$；
+		            当$k_{12} - k_{22} > 1$时，存在区域划分，左上角坐标为$(3k_{21} - 2, 3k_{22} + 1)$，右下角坐标为$(3k_{11} + 4, 3k_{22} + 5)$。
+		            两种情况的区域划分我都放在了附录中。
+		      \item 当缺陷都处在边界上时，我们称为棘手情况，把它放在下一节讨论。
 	      \end{itemize}
 \end{itemize}
 
@@ -255,7 +245,7 @@
 	\label{fig:k-order-staining}
 	\begin{subtable}{.5\linewidth}
 		\centering
-		\caption{k阶正染色}
+		\caption{k阶染色-1}
 		\begin{tabular}{|c|c|c|c|c|c|c|}
 			\hline
 			1        & 2        & 3        & $\cdots$ & k        & 1        & $\cdots$ \\
@@ -277,7 +267,7 @@
 	\end{subtable}%
 	\begin{subtable}{.5\linewidth}
 		\centering
-		\caption{k阶染色-逆}
+		\caption{k阶染色-2}
 		\begin{tabular}{|c|c|c|c|c|c|c|}
 			\hline
 			1        & 2        & 3        & $\cdots$ & k        & 1        & $\cdots$ \\
@@ -306,23 +296,39 @@
 	当$m \times n$的缺陷两格广义棋盘可被$1 \times k$大小的骨牌平铺时，若$k \ge 4$，则缺陷格子分别只可能在坐标$(kx_1 + 1, ky_1 + 1)$和$(kx_2 + 1, ky_2 + 2)$处。
 \end{theorem}
 \begin{proof}
-	我们不妨令坐标为$(1, 1)$和坐标为$(1, 2)$的格子染色为颜色1和颜色2，由引理？我们可以得知，我们只能挖去在所有染色组合中，均被染色为1或染色2的格子，再由定理？得知，坐标$(kx_1 + 1, ky_1 + 1)$和$(kx_2 + 1, ky_2 + 2)$处的格子在所有染色情况下，均会被染色成颜色1和颜色2，缺陷格子可以坐标$(kx_1 + 1, ky_1 + 1)$和$(kx_2 + 1, ky_2 + 2)$处。
+	我们不妨令坐标为$(1, j)$的格子染色为颜色$j \% k$，记$Q_p(i, j) = a$, 意味着在坐标为$(i, j)$在染色方案p下被染色为$a,$，$f(x)$为染色为x的格子数目，
+	我们能够很轻易的得到$f(1) = f(2) = f(x), x \neq 1, x \neq 2$，
+	因此我们只能挖去在所有染色组合中，均被染色为1或染色2的格子，即$Q_p(i, j) = 1 or 2, \forall p$，
+	而$Q_p(kx_1 + 1, ky_1 + 1) = 1, \forall p$，$Q_p(kx_2 + 1, ky_2 + 2) = 1, \forall p$，
+	因此缺陷格子分别落在坐标$(kx_1 + 1, ky_1 + 1)$和$(kx_2 + 1, ky_2 + 2)$处的格子时，棋盘可能可以被平铺。
 
-	接下来我们证明，当坐标不是$(kx_1 + 1, ky_1 + 1)$和$(kx_2 + 1, ky_2 + 2)$时，均存在某种染色方案，使得该坐标染色既不是1也不是2，则定理得证。
+	接下来我们证明，当$(i, j) \neq (kx_1 + 1, ky_1 + 1), (i, j) \neq (kx_2 + 1, ky_2 + 2)$时，$\exists p, s.t. Q_p(i, j) \neq 1 or 2$。
 
+	挑选k阶染色中最经典的两种染色\ref{fig:k-order-staining-1}和\ref{fig:k-order-staining-2}，考虑最左上的$k \times k$大小的区域，做出以下区域划分：
 
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			A: $1 \times 2$       & B: $1  \times (k - 2)$     \\
+			\hline
+			C: $(k - 1) \times 2$ & D: $(k - 1)\times (k - 2)$ \\
+			\hline
+		\end{tabular}
+	\end{table}
 
-	基于\ref{fig:k-order-staining-1},不妨把$(1, j)$染色为j， $(1, j), j \neq 1 or 2$时，该格子已经不是染色为1或2，故第一行的已排除。
-	对于第1列和第2列且不为第一行时，当格子在\ref{fig:k-order-staining-1}中为2时，在\ref{fig:k-order-staining-2}为k，当格子在\ref{fig:k-order-staining-1}为1时，在\ref{fig:k-order-staining-2}为3，故第一列和第二列也已排除。
-
-	对于$(i, j), i > 1, j > 2$，当格子在\ref{fig:k-order-staining-1}中为1时，由于$k \ge 4$，我们考虑第j列的元素，故$[2, k]$共计k-1个元素中，排除染色为1或者2的元素，还剩下$k - 1 - 2 = k-3$个元素，由于$k \ge 4$，故$k-3 \ge 1$，至少存在一个元素满足条件，染色为非1或2，且不在第一行，记为第k个元素。交换第i行和第j行后，这种染色也是满足条件的，但是在新染色中，$(i,j)$染色既不为1也不为2，故$(i, j)$也不能是格子。
-
-	证毕。
-
+	记$Q(i, j) = {a, b}$，意味着在\ref{fig:k-order-staining-1}和\ref{fig:k-order-staining-2}分别染色为$a, b$，除去模块A，分别考虑剩下3个模块：
+	\begin{itemize}
+		\item[模块B] 由于模块B不会染色为1或2，所以缺陷格子不可能落在模块B中。
+		\item[模块C] $Q(2, 1) = \left\{2, k\right\}, Q(2, 2) = \left\{3, 1\right\}, Q(2, k) = \left\{k, 1\right\}, Q(k,2) = \left\{1, 3\right\}$
+			所以对于模块C中的所有格子，均不可能满足$Q(i, j) = \left\{1 or 2, 1 or 2\right\}$。
+		\item[模块D] 假设$\exists i, j, s.t. Q_1(i, j) = 1$，在第$i$行，第$2$列到第$j$列的元素中，排除染色为1或者2的元素，还剩下$k - 1 - 2 = k - 3\ge 1$个元素，
+			故$\exists j^{'}, s.t. Q_1(i, j^{'}) = t, t \neq 1 or 2$，此时交换第$j$行和第$j^{'}$行，仍然是一个满足条件的染色，但是在这个染色中，$Q_p(i, j) = Q_1(i, j^{'}) = t \neq 1 or 2$，矛盾。
+	\end{itemize}
+	因此缺陷格子只能落在模块A中，证毕。
 \end{proof}
 
-
-因此类似k=3的情况，我们只需考虑像这样的染色
+因此类似$k=3$的情况，我们只需考虑像这样的染色
 
 \begin{table}[h]
 	\centering
