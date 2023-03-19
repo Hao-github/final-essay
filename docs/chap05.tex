@@ -1,9 +1,13 @@
 %% chapter 5 dataset, network structure, experiment and result
-\chapter{实验与结果}
-\label{cha:experiment}
+\chapter{结论与展望}
+\section{结论}
+对于$m \times n$的广义棋盘，骨牌大小$1 \times k$，如果棋盘可以被平铺，棋盘一定满足条件$m \equiv 1 (mod k), n \equiv 1 (mod k)$。
+且在此前提下，当$k \ge 3$时，当两个缺陷的坐标$(i_1, j_1)$和$(i_2, j_2)$满足$i_1 \equiv i_2 \equiv 1 (mod k), j_1 + 1 \equiv j_2 \equiv 2 (mod k)$，
+且当$i_1 = i_2 = 1$或$i_1 = i_2 = m$时，$j_2 > j_1$，则此时棋盘可被平铺。
 
-\section{关于生僻字}
+当$k = 3$的情况，当两个缺陷的坐标$(i_1, j_1)$和$(i_2, j_2)$满足$i_1 + 1\equiv i_2 \equiv 0 (mod 3), j_1 \equiv j_2 \equiv 0 (mod 3)$，棋盘也可以被平铺。
 
-测试生僻字
+除此之外，所有的缺陷两格的$m \times n$棋盘都不可被平铺。
 
-昇䊒熗庈焾燋庼廎㶭粌纇颣炥䊧彂㢕糑鄜麛麚䴫麌䴠麎塵䴣麆麠䴤麖䴨䴩䴪麘麞麡麍麏麐麔	
+\section{展望}
+事实上，关于残缺棋盘的完全覆盖问题是一个困难而且复杂的问题，在本论文解决了缺陷两格的完全覆盖问题后，可以沿着本文的解决思路结局缺陷三格甚至缺陷k格的完全覆盖问题，这是下一步的研究方向。

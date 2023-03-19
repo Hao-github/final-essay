@@ -19,34 +19,6 @@
     $m \times n$的广义棋盘中，挖去2个格子，如果存在$k$格线型骨牌完全覆盖，当且仅当$k \mid mn-2$。
 \end{lemma}
 
-仅仅有这个条件是不够的，我们希望说能多加限制条件来排除更多的棋盘，因此我们对棋盘重新考虑，令
-$$
-    \left\{
-    \begin{aligned}
-        m & =  kx_m + m_1, m_1 \in [0, k) \\
-        n & =  kx_n + n_1, n_1 \in [0, k)
-    \end{aligned}
-    \right.
-$$
-
-接下来我们对棋盘进行划分，有
-
-\begin{table}[h]
-    \centering
-    \caption{对棋盘的初步划分}
-    \begin{tabular}{|c|c|}
-
-        \hline
-        $kx_m \times kx_n$ & $m_1 \times kx_n$ \\
-        \hline
-        $kx_m \times n_1$  & $m_1 \times n_1$  \\
-        \hline
-    \end{tabular}
-    \label{fig:first-picture}
-\end{table}
-
-由\ref*{basic-lemma-1}, 可得除$m_1 \times n_1$外，均可被$1 \times k$骨牌平铺，故我们只需要考虑$m_1 \times n_1$这一块, 记为模块C。
-
 我们给出以下定理，来规整棋盘的大小
 \begin{theorem}
     \label{basic-theorem-1}
@@ -54,6 +26,33 @@ $$
 \end{theorem}
 
 \begin{proof}
+    $$
+        \left\{
+        \begin{aligned}
+            m & =  kx_m + m_1, m_1 \in [0, k) \\
+            n & =  kx_n + n_1, n_1 \in [0, k)
+        \end{aligned}
+        \right.
+    $$
+
+    并据此对棋盘进行划分，有
+
+    \begin{table}[h]
+        \centering
+        \caption{对棋盘的初步划分}
+        \begin{tabular}{|c|c|}
+
+            \hline
+            A: $kx_m \times kx_n$ & B: $m_1 \times kx_n$ \\
+            \hline
+            C: $kx_m \times n_1$  & D: $m_1 \times n_1$  \\
+            \hline
+        \end{tabular}
+        \label{fig:first-picture}
+    \end{table}
+
+    由\ref*{basic-lemma-1}, 模块A，B，C均可被$1 \times k$骨牌平铺，故我们只需要考虑模块D。不妨设$m_1 \le n_1$，并对模块D进行染色，有\ref*{fig:k-order-staining-example}。
+
     \begin{table}[ht]
         \centering
         \caption{k阶染色}
@@ -70,29 +69,38 @@ $$
         \end{tabular}
         \label{fig:k-order-staining-example}
     \end{table}
-    不妨设$m_1 \le n_1$，对表格进行染色，有\ref*{fig:k-order-staining-1}
 
-    由\ref*{fig:k-order-staining-1}，记$f(x)$为棋盘中染色为x的格子数目，有$f(m_1) = f(n_1) = f(n_1 + 1) + 1$，
-    而$n_1 < k  \rightarrow n_1 + 1 \le k$，故$f(1) < 1 + f(n_1 + 1) = 1 + f(n_1) - 1 = f(n_1)$，得到式子
+
+    记$g(x)$为棋盘中标记为x的格子数目，由\ref*{fig:k-order-staining-example}，有$g(m_1) = m_1 = g(n_1) = g(n_1 + i) + i = g(i) + m_1 - i, \forall i \in [0, n_1)$。
+
+    记$f(x)$为棋盘中染色为x的格子数目，我们有$f(x) = g(x) + g(x + k)$。而$n_1 < k \rightarrow n_1 + 2 \le k + 1$，故
+    $f(1) = g(1) + g(k + 1) \le 1 + g(n_1 + 2) = 1 + g(n_1) - 2 < g(n_1) = f(n_1)$
     \begin{equation}
         \label{eq1}
         f(m_1) = f(n_1) > f(1)
     \end{equation}
-    而缺陷两格至多使某个$f(x)$减少2或者使某两个$f(x)$减少1，而每个平铺会且仅会覆盖1个1, 2, ... ,k，故我们需要所有的f(x)相等，且至多2个f(x)大于f(1)
-
-    此时分情况讨论
+    而缺陷两格相当于挖去两个相同颜色的格子或者不同颜色的格子，等价于使某个$f(x)$减少2或者使某两个$f(x)$减少1，而每个平铺会且仅会分别覆盖1个染色为1, 2, ... ,k的方块，因此我们需要使得挖去两格后的棋盘中所有的f(x)相等，
+    等价于挖去两格前的棋盘中，满足以下两个条件之一：
+    \begin{itemize}
+        \item 条件1: $\exists p \in [0, k), st. f(p) = f(x) + 2, x \neq p , x \in [0, k)$
+        \item 条件2: $\exists p_1, p_2 \in [0, k), st. f(p_1) = f(p_2) = f(x) + 1, x \neq p_1 \neq p_2, x \in [0, k)$
+    \end{itemize}
+    若挖去两格后，模块D仍然存在，此时分情况讨论：
 
     \begin{enumerate}
-        \item $m_1 < n_1 - 1$，由\ref*{fig:k-order-staining-1}有$f(m_1) = f(n_1) - 1 = f(n_1) > f(1)$，而缺陷格子为2个，至多两个$f(x)$减少1，矛盾。
-        \item $m_1 = n_1$，有$f(m_1) \ge f(1) + 1$
-              \begin{enumerate}
-                  \item $f(m_1) = f(1) + 1$，则有$f(x) = f(m_1) - 1, \forall x < k, x \neq m_1$, 而缺陷格子数目为2，则挖去一个染色为$m_1$的格子后，所有颜色的格子数目已经平衡，
-                        此时挖去任意其他格子均无法保证所有x相等，故矛盾。
-                  \item $f(m_1) > f(1) + 1$, 则有$f(m_1) = f(m_1+1) + 1 = f(m_1 + 2) + 2\ge f(1)$, 因此我们至少需要挖去染色为$m_1$的两个格子和染色为$m_1 + 1$的一个格子，但我们只能挖去两个格子，矛盾
-              \end{enumerate}
-        \item $m_1 = n_1 - 1$ 由上述讨论我们可以得到，我们能且只能挖去染色为$m_1$和$n_1$的格子各一个，此时将有$1 \equiv n_1 + 2 (mod k) \rightarrow 1 = n_1 + 2 - k \rightarrow n_1 = k - 1, m_1 = k - 2$
-              此时我们能证明（待补充），这种情况我们能找到一个染色方案不满足条件，故成立
+        \item $m_1 < n_1 - 1$，由\ref*{fig:k-order-staining-example}有$f(m_1) = f(n_1) - 1 = f(n_1) > f(1)$，$\exists p_1, p_2, p_3, st. f(p_1) = f(p_2) = f(p_3) > f(1)$，矛盾。
+        \item $m_1 = n_1 - 1$ 由上述讨论我们可以得到，此时$p_1 = m_1$，$p_2 = n_1 = m_1 + 1$，满足条件2，而$f(1) = f(n_1) - 1 \rightarrow g(1) + g(k + 1) = f(n_1) - 1 \rightarrow g(k + 1) = g(n_1) - 2 \rightarrow n_1 = k-1$
+              ，即$m_1 = k - 2, n_1 = k - 1$。
 
-              故我们一定只能得到$m_1 =1, n_1 = 2$，得证。
+              由于需要在任意染色下，我们都需要满足条件，因此我们需要被挖去的两个格子在任意染色下，都需要分别被染色成$p_1$和$p_2$，可是染色的总方案数为$(n_1 - 1)!$个，（待补充）。。
+
+              故矛盾。
+        \item $m_1 = n_1$，由\ref*{eq1}，有$f(m_1) \ge f(1) + 1$
+              \begin{enumerate}
+                  \item $f(m_1) = f(1) + 1$，则有$f(x) = f(m_1) - 1, \forall x < k, x \neq m_1$, 既不满足条件1也不满足条件2，矛盾。
+                  \item $f(m_1) > f(1) + 1$, 则有$f(m_1) = f(m_1 + 1) + 1 = f(m_1 + 2) + 2 \ge f(1)$, 故令$p = m_1$后，$f(p) \ge f(1) + 2$但$f(m_1) > f(1)$，矛盾。
+              \end{enumerate}
     \end{enumerate}
+    
+    所以挖去两格后，若模块D仍然存在，则所有条件均矛盾，故模块D不存在，即此时$m_1 = 1, n_1 = 2$，证毕。
 \end{proof}

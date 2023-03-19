@@ -96,68 +96,133 @@
 \begin{theorem}
 	\label{basic-theorem-2}
 	对于$m \times n$的广义棋盘和$1 \times k$的骨牌，且$m \equiv 1 (mod k), n \equiv 2 (mod k)$，
-	如果存在$i \times j$的缺陷，$i \equiv 1 (mod k), j \equiv 2 (mod k), i \le m, j \le n$，
+	如果存在$i \times j$的缺陷C，$i \equiv 1 (mod k), j \equiv 2 (mod k), i \le m, j \le n$，
+	且棋盘的左上角和右下角的格子坐标分别为$(3k_{11} + 1, 3k_{12} + 1)$，$(3k_{21} + 1, 3k_{22} + 2)$，
 	则该棋盘一定能被平铺
 \end{theorem}
-（待补充证明）
+\begin{proof}
+	当存在这样的缺陷时，我们可以把棋盘分成如\ref*{fig:nine-seprature123}的9个区域，大小分别如图所示
 
-由此定理，我们可以得到，当可以把两个缺陷组合成一个$i \times j$的缺陷，$i \equiv 1 (mod k), j \equiv 2 (mod k)$，那么$\forall m > i, \forall n > j$，$m \times n$的广义棋盘
-都可以被平铺。
+	\begin{table}[h]
+		\centering
+		\caption{对棋盘的9划分}
+		\begin{tabular}{|c|c|c|}
+
+			\hline
+			$3k_{12} \times 3k_{11}$               & $(3k_{22} - 3k_{12} + 2)\times 3k_{11}$  & $3k_{22} \times 3k_{11}$                   \\
+			\hline
+			$3k_{12} \times (3k_{21}-3k_{11} + 1)$ & $C: i \times j$                          & $3k_{22} \times (3k_{21}-3k_{11} + 1 + 1)$ \\
+			\hline
+			$3k_{12} \times 3k_{21}$               & $3 (k_{22} - k_{12}) + 2 \times 3k_{21}$ & $3k_{22} \times 3k_{21}$                   \\
+			\hline
+		\end{tabular}
+		\label{fig:nine-seprature123}
+	\end{table}
+
+	由\ref*{basic-lemma-1}，可得除了缺陷C外的8个区域均可被$1 \times k$的骨牌平铺，而中央的缺陷C不需要被平铺，故此时整个棋盘已经可以被平铺，证毕。
+\end{proof}
+
+
+
+由\ref*{basic-theorem-2}，我们可以得把问题转化为，我们如果能把两个缺陷组合成一个满足\ref*{basic-theorem-2}中条件的$i \times j$缺陷，那么该带有缺陷的棋盘就可以被平铺。
 
 \subsection{在染色中分别处于4和5}
 
 由图，我们可以简单的写出4和5所对应的格子的坐标，
 
 \begin{itemize}
-	\item 4的坐标: $(3k_{41}, 3k_{42} + 2)$
-	\item 5的坐标: $(3k_{51}, 3k_{52} + 3)$
+	\item 4的坐标: $(3k_{41} + 2, 3k_{42})$
+	\item 5的坐标: $(3k_{51} + 3, 3k_{52})$
 \end{itemize}
 
-在这里我们直接给出$k_{41}=k_{51}, k_{42} = k_{52}$和$k_{41}=k_{51}, k_{42} = k_{52} + 1$时的平铺方案
+在这里我们不妨假设$k_{51} \ge k_{41}$，（否则我们只需要左右翻转棋盘即可），则有以下2种情况：
 
-\begin{table}[h]
-	\caption{4-5染色}
-	\label{fig:3-order-staining-123}
-	\begin{subtable}{.5\linewidth}
-		\centering
-		\caption{4-5染色}
-		\centering
-		\begin{tabular}{|c|c|c|c|c|}
-			\hline
-			\multicolumn{3}{|c|}{} & \multirow{3}*{} & \multirow{3}*{}             \\
-			\cline{1-3}
-			\multirow{3}*          & \multirow{3}*   & 4                      &  & \\
-			\cline{3-3}
-			                       &                 & 5                      &  & \\
-			\cline{3-5}
-			                       &                 & \multicolumn{3}{|c|}{}      \\
-			\hline
-		\end{tabular}
-		\label{fig:3-order-staining-12}
-	\end{subtable}%
-	\begin{subtable}{.5\linewidth}
-		\centering
-		\caption{5-4染色}
-		\begin{tabular}{|c|c|c|c|c|}
-			\hline
-			\multicolumn{3}{|c|}{} & \multirow{3}*{} & \multirow{3}*{}                                            \\
-			\cline{1-3}
-			\multicolumn{3}{|c|}{} &                 &                                                            \\
-			\cline{1-3}
-			\multirow{3}*{}        & \multirow{3}*{} & 5                      &                 &                 \\
-			\cline{3-5}
-			                       &                 & \multicolumn{3}{|c|}{}                                     \\
-			\cline{3-5}
-			                       &                 & 4                      & \multirow{3}*{} & \multirow{3}*{} \\
-			\cline{1-3}
-			\multicolumn{3}{|c|}{} &                 &                                                            \\
-			\cline{1-3}
-			\multicolumn{3}{|c|}{} &                 &                                                            \\
-			\hline
-		\end{tabular}
-		\label{fig:3-order-staining-22}
-	\end{subtable}
-\end{table}
+\begin{itemize}
+	\item 当$k_{52} \ge k_{42}$时，有以下区域划分
+
+	      \begin{table}[h]
+		      \centering
+		      \begin{tabular}{|cc|c|c|c|cc|}
+			      \hline
+			      \multicolumn{5}{|c|}{$1 \times (3k_{51} - 3k_{41} + 3)$}                & \multicolumn{2}{|c|}{\multirow{4}*{$(3k_{52} - 3k_{42} + 3) \times 2$}}                                                                                        \\
+			      \cline{1-5}
+			      \multicolumn{2}{|c|}{\multirow{4}*{$(3k_{52} - 3k_{42} + 3) \times 2$}} & 4                                                                       & \multicolumn{2}{|c|}{$1 \times (3k_{51} - 3k_{41})$}                       &   &     \\
+			      \cline{3-5}
+			                                                                              &                                                                         & \multicolumn{3}{|c|}{$(3k_{52} - 3k_{42}) \times (3k_{51} - 3k_{41} + 1)$} &   &     \\
+			      \cline{3-5}
+			                                                                              &                                                                         & \multicolumn{2}{|c|}{$1 \times (3k_{51} - 3k_{41})$}                       & 5 &   & \\
+			      \cline{3-7}
+			                                                                              &                                                                         & \multicolumn{5}{|c|}{$1 \times (3k_{51} - 3k_{41} + 3)$}                             \\
+			      \hline
+		      \end{tabular}
+		      \label{fig:4-5-painting}
+	      \end{table}
+
+	      由\ref*{basic-lemma-1}可得，此时所有区块均可被$1 \times 3$的骨牌平铺，也就等价于，这两个缺陷可以组合成一个大小为$(3k{52} - 3k_{42} + 4) \times (3k_{51} - 3k_{41} + 5)$大小的缺陷，
+	      且此时左上角坐标为$(3k_{41} + 1, 3k_{42} - 2)$，右下角坐标为$(3k_{51} + 4, 3k_{52} + 2)$，故由\ref*{basic-theorem-2}，该棋盘可被平铺。
+	\item 当$k_{52} < k_{42}$时，有以下区域划分
+
+	      \begin{table}[h]
+		      \centering
+		      \begin{tabular}{|ccccc|cc|}
+			      \hline
+			      \multicolumn{5}{|c|}{\multirow{2}*{$2 \times (3k_{51} - 3k_{41} + 3)$}} & \multicolumn{2}{|c|}{\multirow{3}*{$3 \times 2$}}                                                                                                                                           \\
+			                                                                              &                                                   &                                                                            &   &                                                   &  & \\
+			      \cline{1-5}
+			      \multicolumn{2}{|c|}{\multirow{3}*{$2 \times (3k_{42} - 3k_{52} + 3)$}} & 5                                                 & \multicolumn{2}{|c|}{$1 \times (3k_{51} - 3k_{41})$}                       &   &                                                        \\
+			      \cline{3-7}
+			                                                                              &                                                   & \multicolumn{5}{|c|}{$(3k_{42} - 3k_{52}) \times (3k_{51} - 3k_{41} + 3)$}                                                              \\
+			      \cline{3-7}
+			                                                                              &                                                   & \multicolumn{2}{|c|}{$1 \times (3k_{51} - 3k_{41})$}                       & 4 & \multicolumn{2}{|c|}{\multirow{3}*{$3 \times 2$}}      \\
+			      \cline{1-5}
+			      \multicolumn{5}{|c|}{\multirow{2}*{$2 \times (3k_{51} - 3k_{41} + 3)$}} &                                                   &                                                                                                                                         \\
+			                                                                              &                                                   &                                                                            &   &                                                   &  & \\
+			      \hline
+		      \end{tabular}
+		      \label{fig:5-4-painting}
+	      \end{table}
+	      由\ref*{basic-lemma-1}可得，此时所有区块均可被$1 \times 3$的骨牌平铺，也就等价于，这两个缺陷可以组合成一个大小为$(3k{52} - 3k_{42} + 4) \times (3k_{51} - 3k_{41} + 5)$大小的缺陷，
+	      且此时左上角坐标为$(3k_{51} + 1, 3k_{52} - 2)$，右下角坐标为$(3k_{41} + 4, 3k_{42} + 2)$，故由\ref*{basic-theorem-2}，该棋盘可被平铺。
+\end{itemize}
+
+\subsection{在染色中分别处于1和2}
+同上述情况，我们可以写出颜色1和颜色2所在的方格坐标。
+\begin{itemize}
+	\item 1的坐标: $(3k_{11} + 1, 3k_{12} + 1)$
+	\item 2的坐标: $(3k_{21} + 1, 3k_{22} + 2)$
+\end{itemize}
+
+
+在这里我们不妨假设$k_{21} > k_{11}$（否则只需要简单的上下翻转棋盘即可），则同样有以下两种情况：
+
+\begin{itemize}
+	\item 当$k_{22} \ge k_{12}$时，有以下区域划分
+
+	      \begin{table}[h]
+		      \centering
+		      \begin{tabular}{|ccc|c|}
+			      \hline
+			      1                                                                                    & \multicolumn{2}{|c|}{$1 \times (3k_{22} -3k_{12})$} & \multirow{2}*{$(3k_{21} - 3k_{11}) \times 1$}     \\
+			      \cline{1-3}
+			      \multicolumn{3}{|c|}{\multirow{2}*{$(3k_{21} - 3k_{11}) \times (3k_{22} -3k_{12})$}} &                                                                                                         \\
+			      \cline{4-4}
+			                                                                                           &                                                     &                                               & 2 \\
+			      \hline
+		      \end{tabular}
+		      \label{fig:1-2-painting}
+	      \end{table}
+
+	      由\ref*{basic-lemma-1}可得，此时所有区块均可被$1 \times 3$的骨牌平铺，也就等价于，这两个缺陷可以组合成一个大小为$(3k{21} - 3k_{11}) \times (3k_{22} - 3k_{21} + 1)$大小的缺陷，
+	      且此时左上角坐标为$(3k_{11} + 1, 3k_{12} + 1)$，右下角坐标为$(3k_{21} + 1, 3k_{22} + 2)$，故由\ref*{basic-theorem-2}，该棋盘可被平铺。
+	\item 当$k_{22} < k_{12}$时，将再次有以下分类
+		  \begin{itemize}
+			\item 当不处于同一行时，即，可以有以下区域划分，由\ref*{basic-lemma-1}得，此时棋盘可被平铺
+			\item 当处于同一行且不在边界上时，有以下区域划分，由\ref*{basic-lemma-1}得，此时棋盘可被平铺
+			\item 当都处在边界上时，我们称为棘手情况，把它放在下一节讨论
+		  \end{itemize}
+\end{itemize}
+
+
 
 \section{骨牌大小k > 3时的情况}
 
@@ -260,4 +325,4 @@
 	\label{fig:k-order-staining-last}
 \end{table}
 
-其中染色1的格子的坐标为$(kx_1 + 1, ky_1 + 1)$，染色2的格子为$(kx_2 + 1, ky_2 + 2)$ 
+同k=3的情况，我们只需要考虑染色分别处于1和2的情况，此时可以完全的套用k=3的情况，且棘手情况也一样，为$k>3$时的边界情况，我们在下一节一起讨论。
