@@ -1,32 +1,32 @@
 \chapter{缺陷格子可能存在的位置与相对应的平铺方案}
 
 \section{骨牌大小k = 3时的情况}
-由\ref*{basic-theorem-1}有，此时棋盘的大小只可能为$(3x_m + 1) \times (3x_n + 2)$，不妨假设缺陷格子的坐标分别为$(i_1, j_1), (i_2, j_2)$。
+由\ref*{basic-theorem-1}有，此时棋盘的大小只可能为$m \times n, m \equiv 1 (mod k), n \equiv 2 (mod k)$，不妨假设缺陷格子的坐标分别为$(i_1, j_1), (i_2, j_2)$。
 
-在这里我们给出一个定理，来辅助我们之后的证明
+在这里我们给出一个定理，来辅助我们之后的证明。
 
 \begin{theorem}
 	\label{basic-theorem-2}
 	对于$m \times n$的广义棋盘和$1 \times k$的骨牌，且$m \equiv 1 (mod k), n \equiv 2 (mod k)$，
-	记某格子的坐标为$(i, j)$，意味着某格子处于第i行第j列，则如果存在$i \times j$的缺陷C，$i \equiv 1 (mod k), j \equiv 2 (mod k), i \le m, j \le n$，
-	且棋盘的左上角和右下角的格子坐标分别为$(3k_{11} + 1, 3k_{12} + 1)$，$(3k_{21} + 1, 3k_{22} + 2)$，
-	则该棋盘一定能被平铺
+	记某格子的坐标为$(i, j)$，意味着某格子处于第i行第j列，则如果存在$i \times j$的矩形缺陷$C$，$i \equiv 1 (mod k), j \equiv 2 (mod k), i \le m, j \le n$，
+	且$Corner_C = \left\{(3k_{11} + 1, 3k_{12} + 1), (3k_{21} + 1, 3k_{22} + 2)\right\}$，
+	则该棋盘一定能被平铺。
 \end{theorem}
 \begin{proof}
-	当存在这样的缺陷时，我们可以把棋盘分成如\ref*{fig:nine-separate}的9个区域，分别如图所示，由\ref*{basic-lemma-1}，可得除了缺陷C外的8个区域均可被$1 \times k$的骨牌平铺，
-	而中央的缺陷C不需要被平铺，故此时整个棋盘已经可以被平铺，证毕。
+	当存在这样的缺陷时，我们可以把棋盘分成如\ref*{fig:nine-separate}的9个区域，分别如图所示，由\ref*{basic-lemma-1}，
+	可得除了矩形缺陷$C$外的8个区域均可被$1 \times k$的骨牌平铺，证毕。
 
 	\begin{table}[htbp]
 		\centering
-		\caption{对棋盘的9划分}
+		\caption{对缺陷棋盘的划分}
 		\begin{tabular}{|c|c|c|}
 
 			\hline
-			$3k_{12} \times 3k_{11}$               & $(3k_{22} - 3k_{12} + 2)\times 3k_{11}$  & $3k_{22} \times 3k_{11}$                   \\
+			$3k_{12} \times 3k_{11}$               & $(3k_{22} - 3k_{12} + 2)\times 3k_{11}$  & $3k_{22} \times 3k_{11}$               \\
 			\hline
-			$3k_{12} \times (3k_{21}-3k_{11} + 1)$ & $C: i \times j$                          & $3k_{22} \times (3k_{21}-3k_{11} + 1 + 1)$ \\
+			$3k_{12} \times (3k_{21}-3k_{11} + 1)$ & $C: i \times j$                          & $3k_{22} \times (3k_{21}-3k_{11} + 1)$ \\
 			\hline
-			$3k_{12} \times 3k_{21}$               & $3 (k_{22} - k_{12}) + 2 \times 3k_{21}$ & $3k_{22} \times 3k_{21}$                   \\
+			$3k_{12} \times 3k_{21}$               & $3 (k_{22} - k_{12}) + 2 \times 3k_{21}$ & $3k_{22} \times 3k_{21}$               \\
 			\hline
 		\end{tabular}
 		\label{fig:nine-separate}
@@ -34,9 +34,25 @@
 \end{proof}
 
 因此根据\ref*{basic-theorem-2}，我们可以得把问题转化为：
-对于某个残缺两格的棋盘，如果他的两个缺陷可以组合成一个满足\ref*{basic-theorem-2}中条件的$i \times j$大小的缺陷，那么该棋盘可以被平铺。
+对于某个残缺两格的棋盘，如果他的两个缺陷可以组合成一个满足\ref*{basic-theorem-2}中条件的矩形缺陷$C$，那么该棋盘可以被平铺。
 
-在图\ref*{fig:k-order-staining-1}的基础上，我们对棋盘进行两种染色，分别记为$Color^3_1$和染色方案$Color^3_2$
+在图\ref*{fig:k-order-staining-1}的基础上，我们对棋盘进行两种染色，分别记为$Color^3_1$和$Color^3_2$，
+显然有$f(1) = f(2) = f(3) + 1$，并据此按照以下规则重新染色得到$Color^3_3$，即图\ref*{fig:3-order-staining-last}。
+
+\begin{itemize}
+	\item $Color^3_1(i, j) = Color^3_2(i, j) = 1$，则$Color^3_3(i, j) = 1$。
+	\item $Color^3_1(i, j) = Color^3_2(i, j) = 2$，则$Color^3_3(i, j) = 2$。
+	\item $Color^3_1(i, j) = 1, Color^3_2(i, j) = 2$，则$Color^3_3(i, j) = 4$。
+	\item $Color^3_1(i, j) = 2, Color^3_2(i, j) = 1$，则$Color^3_3(i, j) = 5$。
+	\item $Color^3_1(i, j) = 3$或 $Color^3_2(i, j) = 3$，则$Color^3_3(i, j) = 0$。
+\end{itemize}
+
+而该棋盘可被平铺的充分条件为缺陷的两个格子分别落在染色1和染色2的位置，即
+
+\begin{itemize}
+	\item $Color^3_3(i_1, j_1) = 1, Color^3_3(i_2, j_2) = 2$
+	\item $Color^3_3(i_1, j_1) = 4, Color^3_3(i_2, j_2) = 5$
+\end{itemize}
 
 \begin{table}[htbp]
 	\caption{3阶染色}
@@ -83,20 +99,9 @@
 	\end{subtable}
 \end{table}
 
-不妨设棋盘行数$m \equiv 1 (mod 3)$，列数$n \equiv 2 (mod 3)$，显然有$f(1) = f(2) = f(3) + 1$，
-并据此按照以下规则重新染色得到染色方案$Color^3_3$，即图\ref*{fig:3-order-staining-last}。
-
-\begin{itemize}
-	\item $Color^3_1(i, j) = Color^3_2(i, j) = 1$，则$Color^3_3(i, j) = 1$。
-	\item $Color^3_1(i, j) = Color^3_2(i, j) = 2$，则$Color^3_3(i, j) = 2$。
-	\item $Color^3_1(i, j) = 1, Color^3_2(i, j) = 2$，则$Color^3_3(i, j) = 4$。
-	\item $Color^3_1(i, j) = 2, Color^3_2(i, j) = 1$，则$Color^3_3(i, j) = 5$。
-	\item $Color^3_1(i, j) = 3$或 $Color^3_2(i, j) = 3$，则$Color^3_3(i, j) = 0$。
-\end{itemize}
-
 \begin{table}[htbp]
 	\centering
-	\caption{3阶重染色}
+	\caption{3阶染色-3}
 	\begin{tabular}{|c|c|c|c|c|c|c|}
 		\hline
 		1        & 2        & 0        & 1        & 2        & 0        & $\cdots$ \\
@@ -117,20 +122,13 @@
 	\label{fig:3-order-staining-last}
 \end{table}
 
-而该棋盘可被平铺的充分条件为缺陷的两个格子分别落在染色1和染色2的位置，即
-
-\begin{itemize}
-	\item $Color^3_3(i_1, j_1) = 1, Color^3_3(i_2, j_2) = 2$
-	\item $Color^3_3(i_1, j_1) = 4, Color^3_3(i_2, j_2) = 5$
-\end{itemize}
-
 \subsection{在染色中分别处于4和5}
 
 由图，我们可以简单的得到染色为4和5所对应的格子的坐标，
 
 \begin{itemize}
 	\item $Color^3_3(3k_{41} + 2, 3k_{42}) = 4$
-	\item $Color^3_3(3k_{51} + 3, 3k_{52}) = 5$ 
+	\item $Color^3_3(3k_{51} + 3, 3k_{52}) = 5$
 \end{itemize}
 
 由于棋盘具有对称性，在这里我们不妨假设$k_{51} \ge k_{41}$，因此会有以下2种情况：
@@ -139,7 +137,7 @@
 
 \begin{table}[ht]
 	\centering
-	\caption{挖去4和5的染色-1}
+	\caption{$k_{52} \ge k_{42}$时的缺陷拼接}
 	\begin{tabular}{|cc|c|cc|c|cc|}
 		\hline
 		\multicolumn{6}{|c|}{$1 \times (3k_{51} - 3k_{41} + 3)$}                & \multicolumn{2}{|c|}{\multirow{4}*{$(3k_{52} - 3k_{42} + 3) \times 2$}}                                                                                        \\
@@ -159,7 +157,7 @@
 \begin{table}[ht]
 	\centering
 
-	\caption{挖去4和5的染色-2}
+	\caption{$k_{52} < k_{42}$的缺陷拼接}
 	\begin{tabular}{|ccccc|cc|}
 		\hline
 		\multicolumn{5}{|c|}{\multirow{2}*{$2 \times (3k_{51} - 3k_{41} + 3)$}} & \multicolumn{2}{|c|}{\multirow{3}*{$3 \times 2$}}                                                                                                                                           \\
@@ -179,21 +177,20 @@
 \end{table}
 
 \begin{itemize}
-	\item 当$k_{52} \ge k_{42}$时，有如\ref*{fig:4-5-painting}一样的划分，
-	      此时左上角坐标为$(3k_{41} + 1, 3k_{42} - 2)$，右下角坐标为$(3k_{51} + 4, 3k_{52} + 2)$。
-	\item 当$k_{52} < k_{42}$时，有如\ref*{fig:5-4-painting}一样的划分，
-	      此时左上角坐标为$(3k_{51} + 1, 3k_{52} - 2)$，右下角坐标为$(3k_{41} + 4, 3k_{42} + 2)$。
+	\item 在图\ref*{fig:4-5-painting}中，$Corner_C = \left\{(3k_{41} + 1, 3k_{42} - 2), (3k_{51} + 4, 3k_{52} + 2)\right\}$。
+	\item 在图\ref*{fig:5-4-painting}中，$Corner_C = \left\{(3k_{51} + 1, 3k_{52} - 2), (3k_{41} + 4, 3k_{42} + 2)\right\}$。
 \end{itemize}
 
-由\ref*{basic-lemma-1}可得，无论如何，所有区块均可被$1 \times 3$的骨牌平铺，也就等价于，这两个缺陷可以组合成一个大小为$(3k_{52} - 3k_{42} + 4) \times (3k_{51} - 3k_{41} + 5)$大小的缺陷，
-并且角落坐标满足\ref*{basic-theorem-2}中的条件。因此由\ref*{basic-theorem-2}，当缺陷分别处在染色4和染色5的位置时，无论缺陷怎么分布，该缺陷棋盘都可被平铺。
+由\ref*{fig:4-5-painting}和\ref*{fig:5-4-painting}可得，无论缺陷格子如何落在颜色4和颜色5上，
+我们都能找到一种拼接方案，将两个缺陷拼接成满足\ref*{basic-theorem-2}中的条件的矩形缺陷。
 
 \subsection{在染色中分别处于1和2}
 
-同在染色中处于4和5的情况一样，我们可以写出颜色1和颜色2所在的方格坐标。
+同在染色中处于4和5的情况，我们可以写出染色为1和2所对应的格子坐标。
+
 \begin{itemize}
 	\item $Color^3_3(3k_{11} + 1, 3k_{12} + 1) = 1$
-	\item $ Color^3_3(3k_{21} + 1, 3k_{22} + 2) = 2$
+	\item $Color^3_3(3k_{21} + 1, 3k_{22} + 2) = 2$
 \end{itemize}
 
 
@@ -201,7 +198,7 @@
 
 \begin{table}[b]
 	\centering
-	\caption{挖去1和2的染色}
+	\caption{$k_{22} \ge k_{12}$的缺陷拼接}
 	\begin{tabular}{|ccc|c|}
 		\hline
 		1                                                                                    & \multicolumn{2}{|c|}{$1 \times (3k_{22} -3k_{12})$} & \multirow{2}*{$(3k_{21} - 3k_{11}) \times 1$}     \\
@@ -216,7 +213,7 @@
 
 \begin{table}[t]
 	\centering
-	\caption{挖去2和1的染色-1}
+	\caption{$k_{22} < k_{12}$且$k_{21} > k_{11}$的缺陷拼接}
 	\begin{tabular}{|cc|ccc|cc|}
 		\hline
 		\multicolumn{2}{|c|}{\multirow{3}{*}{$(3k_{21} - 3k_{11}) \times 1$}} & 2 & \multicolumn{4}{|c|}{$1 \times  (3k_{12} - 3k_{22})$}                                                                                 \\
@@ -231,19 +228,27 @@
 \end{table}
 
 \begin{itemize}
-	\item 当$k_{22} \ge k_{12}$时，有如\ref*{fig:1-2-painting}的区域划分，此时左上角坐标为$(3k_{11} + 1, 3k_{12} + 1)$，右下角坐标为$(3k_{21} + 1, 3k_{22} + 2)$。
-	\item 当$k_{22} < k_{12}$时，将再次有以下分类
+	\item 当$k_{22} \ge k_{12}$时，有缺陷拼接图\ref*{fig:1-2-painting}，\\
+	      $Corner_C = \left\{(3k_{11} + 1, 3k_{12} + 1), (3k_{21} + 1, 3k_{22} + 2)\right\}$。
+	\item 当$k_{22} < k_{12}$时，有以下分类：
 	      \begin{itemize}
-		      \item 当缺陷不处于同一行时，即$k_{21} > k_{11}$，有如\ref*{fig:2-1-painting-1}的区域划分，左上角坐标为$(3k_{21} + 1, 3k_{22} + 1)$，右下角坐标为$(3k_{11} + 1, 3k_{22} + 2)$
-		      \item 当缺陷处于同一行且不在边界上时，有$m \ge 7$，当$n = 5$时，穷举得到无解，当$n \ge 8$，
-		            则当$k_{12} - k_{22} = 1$时，存在区域划分，左上角坐标为$(3k_{21}- 2, 3k_{22} + 1)$，右下角坐标为$(3k_{11} + 1, 3k_{22} + 2)$；
-		            当$k_{12} - k_{22} > 1$时，存在区域划分，左上角坐标为$(3k_{21} - 2, 3k_{22} + 1)$，右下角坐标为$(3k_{11} + 4, 3k_{22} + 5)$。
-		            两种情况的区域划分我都放在了附录中。
+		      \item 当缺陷不处于同一行时，有缺陷拼接图\ref*{fig:2-1-painting-1}，\\
+		            $Corner_C = \left\{(3k_{21} + 1, 3k_{22} + 1), (3k_{11} + 1, 3k_{22} + 2)\right\}$。
+		      \item 当缺陷处于同一行且不在边界上时，有$m \ge 7$，当$n = 5$时，穷举得到无解，当$n \ge 8$时：
+		            \begin{itemize}
+			            \item 当$k_{12} - k_{22} = 1$时，存在缺陷拼接，\\
+			                  $Corner_C = \left\{(3k_{21} - 2, 3k_{22} + 1), (3k_{11} + 1, 3k_{22} + 2)\right\}$，具体缺陷拼接图见附录。
+			            \item 当$k_{12} - k_{22} > 1$时，存在缺陷拼接，\\
+			                  $Corner_C = \left\{(3k_{21} - 2, 3k_{22} + 1), (3k_{11} + 4, 3k_{22} + 5)\right\}$，具体缺陷拼接图见附录。
+		            \end{itemize}
 		      \item 当缺陷都处在边界上时，我们称为棘手情况，把它放在下一节讨论。
 	      \end{itemize}
 \end{itemize}
 
 
+除了棘手情况，无论缺陷如何分布在颜色1和颜色2上，我们们都能找到一种拼接方案，将两个缺陷拼接成满足\ref*{basic-theorem-2}中的条件的矩形缺陷。
+
+因此由\ref*{basic-theorem-2}，除棘手情况外，当缺陷分别落在颜色4和颜色5上，或者分别落在颜色1和颜色2上时，无论缺陷怎么分布，该缺陷棋盘都可被平铺。
 
 \section{骨牌大小k > 3时的情况}
 
@@ -296,41 +301,48 @@
 	\end{subtable}
 \end{table}
 
+\begin{table}[htb]
+	\centering
+	\caption{$k \times k$的区域划分}
+	\begin{tabular}{|c|c|}
+		\hline
+		A: $1 \times 2$       & B: $1  \times (k - 2)$     \\
+		\hline
+		C: $(k - 1) \times 2$ & D: $(k - 1)\times (k - 2)$ \\
+		\hline
+	\end{tabular}
+	\label{fig:k-division}
+\end{table}
 
-在$k \ge 4$的情况下，我们仍然假设$m \equiv 1 (mod k), n \equiv 2 (mod k)$，我们可以给出以下引理。
+在$k \ge 4$的情况下，我们可以给出以下定理。
 \begin{theorem}
 	\label{basic-theorem-3}
 	当$m \times n$的缺陷两格广义棋盘可被$1 \times k$大小的骨牌平铺时，若$k \ge 4$，则缺陷格子分别只可能在坐标$(kx_1 + 1, ky_1 + 1)$和$(kx_2 + 1, ky_2 + 2)$处。
 \end{theorem}
 \begin{proof}
 	我们能够很轻易的得到$f(1) = f(2) = f(x), x \neq 1, x \neq 2$，
-	因此我们只能挖去在所有染色组合中，均被染色为1或染色2的格子，即$Color^k_p(i, j) \notin \left\{1, 2\right\},  \forall p$，
-	而$Color^k_p(kx_1 + 1, ky_1 + 1) = 1, \forall p$，$Color^k_p(kx_2 + 1, ky_2 + 2) = 1, \forall p$，
+	因此我们只能挖去在所有染色组合中，均被染色为1或染色2的格子，即$Color^k_p(i, j) \in \left\{1, 2\right\},  \forall p$，
+	而$Color^k_p(kx_1 + 1, ky_1 + 1) = 1, Color^k_p(kx_2 + 1, ky_2 + 2) = 2, \forall p$，
 	因此缺陷格子分别落在坐标$(kx_1 + 1, ky_1 + 1)$和$(kx_2 + 1, ky_2 + 2)$处的格子时，棋盘可能可以被平铺。
 
 	接下来我们证明，当$(i, j) \neq (kx_1 + 1, ky_1 + 1), (i, j) \neq (kx_2 + 1, ky_2 + 2)$时，$\exists p, s.t. Color^k_p(i, j) \notin \left\{1, 2\right\}$。
 
 	挑选k阶染色中最经典的两种染色方案$Color^k_1$和$Color^k_2$（图\ref{fig:k-order-staining-1}和图\ref{fig:k-order-staining-2}），
-	考虑最左上的$k \times k$大小的区域，做出以下区域划分：
-
-	\begin{table}[ht]
-		\centering
-		\begin{tabular}{|c|c|}
-			\hline
-			A: $1 \times 2$       & B: $1  \times (k - 2)$     \\
-			\hline
-			C: $(k - 1) \times 2$ & D: $(k - 1)\times (k - 2)$ \\
-			\hline
-		\end{tabular}
-	\end{table}
+	考虑最左上的$k \times k$大小的区域，做出表\ref{fig:k-division}的区域划分：
 
 	\begin{itemize}
 		\item[模块B] 由于模块B不会染色为1或2，所以缺陷格子不可能落在模块B中。
-		\item[模块C] $Q(2, 1) = \left\{2, k\right\}, Q(2, 2) = \left\{3, 1\right\}, Q(2, k) = \left\{k, 1\right\}, Q(k,2) = \left\{1, 3\right\}$
-			所以对于模块C中的所有格子，均不可能满足$Q(i, j) = \left\{1 or 2, 1 or 2\right\}$。
-		\item[模块D] 假设$\exists i, j, s.t. Color^k_1(i, j) = 1$，在第$i$行，第$2$列到第$j$列的元素中，排除染色为1或者2的元素，还剩下$k - 1 - 2 = k - 3\ge 1$个元素，
-			故$\exists j^{'}, s.t. Color^k_1(i, j^{'}) = t \notin \left\{1, 2\right\}$，此时交换第$j$行和第$j^{'}$行，仍然是一个满足条件的染色方案$p$，
-			$Color^k_p(i, j) = Color^k_1(i, j^{'}) = t \notin \left\{1, 2\right\}$，矛盾。
+		\item[模块C]
+			\begin{itemize}
+				\item $Color^k_1(2, 1) = 2, Color^k_2(2, 1) = k$
+				\item $Color^k_1(2, 2) = 3, Color^k_2(2, 2) = 1$
+				\item $Color^k_1(k, 1) = k, Color^k_2(k, 1) = 2$
+				\item $Color^k_1(k, 2) = 1, Color^k_2(k, 2) = 3$
+			\end{itemize}
+			由于模块C在两种染色下只有共计4个1或2，故模块C中的所有格子，均不可能满足$Color^k_p(i, j) \in \left\{1, 2\right\}, \forall p$。
+		\item[模块D] 对于任意$i$，不妨假定$Color^k_1(i, j_1) = 1, Color^k_1(i, j_2) = 2$，考虑$Color^k_1(i, y) = 1, y \in [2, k], y \notin \left\{j_1, j_2\right\}$，
+			由于$k \ge 4$，故$\exists j^{'}, s.t. Color^k_1(i, j^{'}) = t \notin \left\{1, 2\right\}$，此时交换第$j_1$行和第$j^{'}$行，仍然是一个满足条件的染色方案$p$，
+			但$Color^k_p(i, j) = Color^k_1(i, j^{'}) = t \notin \left\{1, 2\right\}$，矛盾。
 	\end{itemize}
 	因此缺陷格子只能落在模块A中，证毕。
 \end{proof}

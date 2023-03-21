@@ -55,7 +55,8 @@
         \label{fig:first-picture}
     \end{table}
 
-    由引理\ref{basic-lemma-1}, 模块A，B，C均可被$1 \times k$骨牌平铺，故我们只需要考虑模块D。不妨设$m_1 \le n_1$，并基于张媛对残缺一格棋盘的研究\cite{zhangOneStain}对模块D进行标记，有表\ref{fig:k-order-staining-example}。
+    由引理\ref{basic-lemma-1}, 模块A，B，C均可被$1 \times k$骨牌平铺，因此模块A，B，C的标记和染色我们都不需要考虑，只需要考虑模块D的标记和染色\cite{fengBasicTheorem}。
+    不妨设$m_1 \le n_1$，并基于张媛对残缺一格棋盘的研究\cite{zhangOneStain}对模块D进行标记，有表\ref{fig:k-order-staining-example}。
 
     \begin{table}[ht]
         \centering
@@ -90,8 +91,8 @@
     \begin{equation}
         g(x)=\left\{
         \begin{aligned}
-            x              & , x \in [1, m_1]           \\
-            m_1            & , x \in (m_1, n_1)         \\
+            x              & , x \in [1, m_1]             \\
+            m_1            & , x \in (m_1, n_1)           \\
             m_1 + n_1  - x & , x \in [n_1, m_1 + n_1 - 1]
         \end{aligned}
         \right.
@@ -99,8 +100,15 @@
     \end{equation}
 
     我们将所有标记为$x$的染色为$x \% k$，记$f(x)$为棋盘中染色为x的格子数目，有$f(x) = g(x) + g(x + k)$。而$n_1 < k \rightarrow n_1 + 2 \le k + 1$，故
-    $f(1) = g(1) + g(k + 1) \le 1 + g(n_1 + 2) = 1 + g(n_1) - 2 < g(n_1) = f(n_1)$
-    ，因此我们能得到等式\ref{eq1}。
+    $$
+        \begin{aligned}
+            f(1) & = g(1) + g(k + 1)  \\
+                 & \le 1 + g(n_1 + 2) \\
+                 & = 1 + g(n_1) - 2   \\
+                 & < g(n_1) = f(n_1)
+        \end{aligned}
+    $$
+    因此我们能得到等式\ref{eq1}。
 
     \begin{equation}
         \label{eq1}
@@ -121,19 +129,19 @@
     \begin{enumerate}
         \item $m_1 < n_1 - 1$，由\ref{fig:k-order-staining-example}有$f(m_1) = f(n_1) - 1 = f(n_1) > f(1)$，$\exists p_1, p_2, p_3, s.t. f(p_1) = f(p_2) = f(p_3) > f(1)$，矛盾。
         \item $m_1 = n_1 - 1$ 由上述讨论我们可以得到，此时$p_1 = m_1$，$p_2 = n_1 = m_1 + 1$，满足条件2，
-        而$f(1) = f(n_1) - 1 \rightarrow g(1) + g(k + 1) = f(n_1) - 1 \rightarrow g(k + 1) = g(n_1) - 2 \rightarrow n_1 = k - 1$，即$m_1 = k - 2, n_1 = k - 1$。
+              而$f(1) = f(n_1) - 1 \rightarrow g(1) + g(k + 1) = f(n_1) - 1 \rightarrow g(k + 1) = g(n_1) - 2 \rightarrow n_1 = k - 1$，即$m_1 = k - 2, n_1 = k - 1$。
 
               假设对于所有的染色，都存在两个格子使得在所有的染色下，这两个格子都被染色为$p_1$和$p_2$，记$Color^k_p(i, j) = a$为第$i$行第$j$列在染色方案$p$下染色为$a$，
               任取一种染色方案$Color^k_p$：
               \begin{itemize}
-                \item 当$2 \mid k$时，由对称性，此时两个缺陷格子格子必然位于$(\frac{k}{2} - 1,\frac{k}{2}), (\frac{k}{2},\frac{k}{2})$，
-                由\ref{fig:k-order-staining-example}简单的得到$Color^k_p(\frac{k}{2} - 1,\frac{k}{2}) = 1, Color^k_p(\frac{k}{2},\frac{k}{2}) = 2$，
-                此时交换第一列和第$\frac{k}{2}$列，仍然是一个合法的染色$Color^k_{p^{'}}$，但是交换后的染色中，
-                由于$Color^k_p(1, 1) = 1$，因此交换后的$Color^k_{p^{'}}(\frac{k}{2} - 1,\frac{k}{2}) \neq Color^k_{p^{'}}(\frac{k}{2},\frac{k}{2}) \neq 1$，因此矛盾。
-                \item 当$2 \nmid k$时，由对称性，此时两个缺陷格子必然位于$(\frac{k - 1}{2},\frac{k - 1}{2}), (\frac{k - 1}{2},\frac{k + 1}{2})$,
-                由\ref{fig:k-order-staining-example}简单的得到$Color^k_p(\frac{k - 1}{2},\frac{k - 1}{2}) = 1, Color^k_p(\frac{k - 1}{2},\frac{k + 1}{2}) = 2$，
-                此时交换第一行和第$\frac{k - 1}{2}$行，仍然是一个合法的染色$Color^k_{p^{'}}$，但是交换后的染色中，
-                由于$Color^k_p(1, 1) = 1$，因此交换后的$Color^k_{p^{'}}(\frac{k - 1}{2},\frac{k - 1}{2}) \neq Color^k_{p^{'}}(\frac{k - 1}{2},\frac{k + 1}{2}) \neq 1$，也矛盾。
+                  \item 当$2 \mid k$时，由对称性，此时两个缺陷格子格子必然位于$(\frac{k}{2} - 1,\frac{k}{2}), (\frac{k}{2},\frac{k}{2})$，
+                        由\ref{fig:k-order-staining-example}简单的得到$Color^k_p(\frac{k}{2} - 1,\frac{k}{2}) = 1, Color^k_p(\frac{k}{2},\frac{k}{2}) = 2$，
+                        此时交换第一列和第$\frac{k}{2}$列，仍然是一个合法的染色$Color^k_{p^{'}}$，但是交换后的染色中，
+                        由于$Color^k_p(1, 1) = 1$，因此交换后的$Color^k_{p^{'}}(\frac{k}{2} - 1,\frac{k}{2}) \neq Color^k_{p^{'}}(\frac{k}{2},\frac{k}{2}) \neq 1$，因此矛盾。
+                  \item 当$2 \nmid k$时，由对称性，此时两个缺陷格子必然位于$(\frac{k - 1}{2},\frac{k - 1}{2}), (\frac{k - 1}{2},\frac{k + 1}{2})$,
+                        由\ref{fig:k-order-staining-example}简单的得到$Color^k_p(\frac{k - 1}{2},\frac{k - 1}{2}) = 1, Color^k_p(\frac{k - 1}{2},\frac{k + 1}{2}) = 2$，
+                        此时交换第一行和第$\frac{k - 1}{2}$行，仍然是一个合法的染色$Color^k_{p^{'}}$，但是交换后的染色中，
+                        由于$Color^k_p(1, 1) = 1$，因此交换后的$Color^k_{p^{'}}(\frac{k - 1}{2},\frac{k - 1}{2}) \neq Color^k_{p^{'}}(\frac{k - 1}{2},\frac{k + 1}{2}) \neq 1$，也矛盾。
               \end{itemize}
               因此我们总能找到一种染色不满足条件，故矛盾。
         \item $m_1 = n_1$，由\ref{eq1}，有$f(m_1) \ge f(1) + 1$
