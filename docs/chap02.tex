@@ -1,6 +1,6 @@
 \chapter{棋盘所满足的条件}
-\label{cha:sysu-thesis-contents-format-requirement}
-对一般的$m \times n$的完整矩形棋盘， 冯跃峰给出了$k$格线型骨牌完全覆盖的充分必要条件， 这是我们研究覆盖问题的基础。
+
+对一般的$m \times n$的完整矩形棋盘， 冯跃峰\cite{fengBasicTheorem}给出了$k$格线型骨牌完全覆盖的充分必要条件， 这是我们研究覆盖问题的基础。
 
 \begin{lemma}
     \label{basic-lemma-1}
@@ -9,14 +9,20 @@
 
 而对于多格残缺棋盘，重点是确定棋盘的大小$(m, n)$和残缺格子所在的位置$(i, j)$，在这一章节我们先考虑棋盘的大小所满足的条件。
 
-以下的符号均建立在整数集的基础上。
+以下的符号均建立在整数集的基础上，由于康庆德已经研究完毕$1 \times 2$骨牌的覆盖\cite{ZRZZ199205013}，因此我们的只研究骨牌长度大于3的情况。
 
 显而易见的，我们能简单得到以下引理。
 \begin{lemma}
     \label{basic-lemma-2}
-    $m \times n$的广义棋盘中，挖去2个格子，如果存在$k$格线型骨牌完全覆盖，当且仅当$k \mid mn-2$。
+    $m \times n$的广义棋盘中，挖去2个格子，如果存在$k$格线型骨牌完全覆盖，当且仅当$k \mid mn - 2$。
 \end{lemma}
-
+\begin{proof}
+    简单的，假设存在t个线性骨牌能够完全覆盖整个棋盘，由于骨牌不会互相重复的覆盖同一个格子，
+    所以所有骨牌所覆盖的格子数目应该要和棋盘的总的格子数目相同，即
+    \begin{equation}
+        tk = mn - 2 \rightarrow k \mid mn - 2
+    \end{equation}
+\end{proof}
 我们给出以下定理，来规整棋盘的大小
 \begin{theorem}
     \label{basic-theorem-1}
@@ -24,17 +30,17 @@
 \end{theorem}
 
 \begin{proof}
-    简单的，不妨设\ref*{theBegin}，并据此对棋盘进行划分，得到\ref*{fig:first-picture}。
-
-    $$
+    \begin{align}
         \left\{
         \begin{aligned}
             m & =  kx_m + m_1, m_1 \in [0, k) \\
             n & =  kx_n + n_1, n_1 \in [0, k)
-            \label{theBegin}
         \end{aligned}
         \right.
-    $$
+        \label{theBegin}
+    \end{align}
+
+    简单的，不妨设\ref{theBegin}，并据此对大小相同的完整棋盘进行划分，得到表\ref{fig:first-picture}。
 
     \begin{table}[h]
         \centering
@@ -49,7 +55,7 @@
         \label{fig:first-picture}
     \end{table}
 
-    由\ref*{basic-lemma-1}, 模块A，B，C均可被$1 \times k$骨牌平铺，故我们只需要考虑模块D。不妨设$m_1 \le n_1$，并对模块D进行染色，有\ref*{fig:k-order-staining-example}。
+    由引理\ref{basic-lemma-1}, 模块A，B，C均可被$1 \times k$骨牌平铺，故我们只需要考虑模块D。不妨设$m_1 \le n_1$，并基于张媛对残缺一格棋盘的研究\cite{zhangOneStain}对模块D进行染色，有\ref{fig:k-order-staining-example}。
 
     \begin{table}[ht]
         \centering
@@ -69,35 +75,51 @@
     \end{table}
 
 
-    记$g(x)$为棋盘中标记为x的格子数目，由\ref*{fig:k-order-staining-example}，有$g(m_1) = m_1 = g(n_1) = g(n_1 + i) + i = g(i) + m_1 - i, \forall i \in [0, n_1)$。
+    记$g(x)$为棋盘中标记为x的格子数目，由表\ref{fig:k-order-staining-example}，有
+    \begin{equation}
+        g(m_1) = m_1 = g(n_1) = g(n_1 + i) + i = g(i) + m_1 - i, \forall i \in [0, n_1)
+    \end{equation}
 
     记$f(x)$为棋盘中染色为x的格子数目，我们有$f(x) = g(x) + g(x + k)$。而$n_1 < k \rightarrow n_1 + 2 \le k + 1$，故
     $f(1) = g(1) + g(k + 1) \le 1 + g(n_1 + 2) = 1 + g(n_1) - 2 < g(n_1) = f(n_1)$
-
+    ，因此我们能得到等式\ref{eq1}.
     \begin{equation}
         \label{eq1}
         f(m_1) = f(n_1) > f(1)
     \end{equation}
 
-    而缺陷两格相当于挖去两个相同颜色的格子或者不同颜色的格子，等价于使某个$f(x)$减少2或者使某两个$f(x)$减少1，而每个平铺会且仅会分别覆盖1个染色为1, 2, ... ,k 的方块，因此我们需要使得挖去两格后的棋盘中所有的f(x)相等，
-    等价于挖去两格前的棋盘中，满足以下两个条件之一：
+    现在我们考虑残缺两格的棋盘上的直线覆盖，由于每个直线骨牌会且仅会分别覆盖1个染色为$1, 2, ... ,k$的方块，
+    因此残缺两格后的棋盘能被直线骨牌覆盖的充分条件是，$\forall p_1, p_2, f(p_1) = f(p_2)$
+    因此根据残缺两格分布在同种颜色和不同颜色的可能上，需要满足以下两个条件之一：
 
     \begin{itemize}
         \item 条件1: $\exists p \in [0, k), st. f(p) = f(x) + 2, x \neq p , x \in [0, k)$
         \item 条件2: $\exists p_1, p_2 \in [0, k), st. f(p_1) = f(p_2) = f(x) + 1, x \neq p_1 \neq p_2, x \in [0, k)$
     \end{itemize}
 
-    若挖去两格后，模块D仍然存在，此时分情况讨论:
+    因此如果模块D存在，分情况讨论:
 
     \begin{enumerate}
-        \item $m_1 < n_1 - 1$，由\ref*{fig:k-order-staining-example}有$f(m_1) = f(n_1) - 1 = f(n_1) > f(1)$，$\exists p_1, p_2, p_3, st. f(p_1) = f(p_2) = f(p_3) > f(1)$，矛盾。
+        \item $m_1 < n_1 - 1$，由\ref{fig:k-order-staining-example}有$f(m_1) = f(n_1) - 1 = f(n_1) > f(1)$，$\exists p_1, p_2, p_3, st. f(p_1) = f(p_2) = f(p_3) > f(1)$，矛盾。
         \item $m_1 = n_1 - 1$ 由上述讨论我们可以得到，此时$p_1 = m_1$，$p_2 = n_1 = m_1 + 1$，满足条件2，而$f(1) = f(n_1) - 1 \rightarrow g(1) + g(k + 1) = f(n_1) - 1 \rightarrow g(k + 1) = g(n_1) - 2 \rightarrow n_1 = k - 1$
               ，即$m_1 = k - 2, n_1 = k - 1$。
 
-              由于需要在任意染色下，我们都需要满足条件，因此我们需要被挖去的两个格子在任意染色下，都需要分别被染色成$p_1$和$p_2$，可是染色的总方案数为$(n_1 - 1)!$个，（待补充）。。
+              由于需要在任意染色下，我们都需要满足条件，因此我们需要两个缺陷格子在任意染色下都落在染色$p_1$和$p_2$，接下来我们证明对任意两个格子，存在一种染色，使得染色不都为$p_1$和$p_2$，导出矛盾。
+              
+              记$P(i, j) = a$为第$i$行第$j$列染色为$a$，$P^{'}(i, j) = a$为进行某种交换后，第$i$行第$j$列染色为$a$。
 
-              故矛盾。
-        \item $m_1 = n_1$，由\ref*{eq1}，有$f(m_1) \ge f(1) + 1$
+              当$2 \mid k$时，由对称性，此时两个缺陷格子格子必然位于$(\frac{k}{2} - 1,\frac{k}{2}), (\frac{k}{2},\frac{k}{2})$,
+              由\ref{fig:k-order-staining-example}简单的得到$P(\frac{k}{2} - 1,\frac{k}{2}) = 1, P(\frac{k}{2},\frac{k}{2}) = 2$，
+              此时交换第一列和第$\frac{k}{2}$列，仍然是一个合法的染色，但是交换后的染色中，
+              由于$P(1, 1) = 1$，因此交换后的$P^{'}(\frac{k}{2} - 1,\frac{k}{2}) \neq P^{'}(\frac{k}{2},\frac{k}{2}) \neq 1$，因此矛盾。
+
+              当$2 \nmid k$时，由对称性，此时两个缺陷格子格子必然位于$(\frac{k - 1}{2},\frac{k - 1}{2}), (\frac{k - 1}{2},\frac{k + 1}{2})$,
+              由\ref{fig:k-order-staining-example}简单的得到$P(\frac{k - 1}{2},\frac{k - 1}{2}) = 1, P(\frac{k - 1}{2},\frac{k + 1}{2}) = 2$，
+              此时交换第一行和第$\frac{k - 1}{2}$行，仍然是一个合法的染色，但是交换后的染色中，
+              由于$P(1, 1) = 1$，因此交换后的$P^{'}(\frac{k - 1}{2},\frac{k - 1}{2}) \neq P^{'}(\frac{k - 1}{2},\frac{k + 1}{2}) \neq 1$，也矛盾。
+              
+              因此我们总能找到一种染色不满足条件，故矛盾。
+        \item $m_1 = n_1$，由\ref{eq1}，有$f(m_1) \ge f(1) + 1$
               \begin{enumerate}
                   \item $f(m_1) = f(1) + 1$，则有$f(x) = f(m_1) - 1, \forall x < k, x \neq m_1$, 既不满足条件1也不满足条件2，矛盾。
                   \item $f(m_1) > f(1) + 1$, 则有$f(m_1) = f(m_1 + 1) + 1 = f(m_1 + 2) + 2 \ge f(1)$, 故令$p = m_1$后，$f(p) \ge f(1) + 2$但$f(m_1) > f(1)$，矛盾。
@@ -107,7 +129,7 @@
     所以挖去两格后，若模块D仍然存在，则所有条件均矛盾，故模块D不存在，即此时$m_1 = 1, n_1 = 2$，证毕。
 \end{proof}
 
-因此，对于我们已经规整好了棋盘的规模，并把问题转化如下
+因此，对于我们已经规整好了棋盘的规模，并把问题转化如下：
 
 对于大小为$1 \times k$的骨牌，我们考虑缺陷两格的$m \times n$的棋盘，其中$m \equiv 1 (mod k), n \equiv 2 (mod k)$，哪些棋盘可以被平铺。
 

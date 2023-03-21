@@ -8,24 +8,25 @@
 %%
 
 \cabstract{
-    由古老的国际象棋游戏演变进化而来的骨牌平铺问题，又称棋盘覆盖问题，是组合数学中历史悠久的经典问题。
-    最初的研究是关于$2$格多米诺骨牌在 $8 \times 8$ 的国际象棋棋盘上的覆盖问题，逐步推广到了k格骨牌在$m \times n$阶的数学棋盘上的覆盖问题。
-    
-    对棋盘覆盖问题的研究由来已久，冯跃峰证明了线型骨牌在完整矩形棋盘的完全覆盖充要条件；康庆德用染色法证明了残缺棋盘可被$1 \times 2$多米诺骨牌完全覆盖的充要条件；张媛则用轨道循环标号法证明了线型骨牌在残缺
-    一格棋盘上的覆盖问题。
+    由古老的国际象棋游戏演变进化而来的骨牌平铺问题，又称棋盘覆盖问题，是组合数学中历史悠久的经典问题，目前对于缺陷棋盘的直线骨牌覆盖问题中，只研究到了残缺一格的直线骨牌覆盖问题。
 
-    而关于棋盘覆盖实际问题的研究的应用，宗传明则发现骨牌覆盖问题可应用于地砖铺设当中，不仅限于线型骨牌，还存在多边形骨牌覆盖，并且完整刻画了能构成六重晶格铺砌的所有铺砖，而经典的俄罗斯方块的拼图小游戏，
-    文件加密技术等都会应用到棋盘覆盖问题的相关结论。
-    
-    本文在残缺一格棋盘的平铺问题的基础上进行扩展，利用循环染色法，构建出残缺两格棋盘的平铺问题的解，并利用分治的思想构建了对边界条件上的棘手情况的处理，成功解决了这个问题。
+    本文在残缺一格棋盘的平铺问题的解法基础上进行扩展，利用循环染色法，构建出残缺两格棋盘的直线骨牌平铺问题的解并给出例子，对于边界条件上的不容易处理的问题，本文利用了分治的思想，
+    结合数学归纳和无穷递降的思想，把边界情况上的问题缩小到规模更小的问题来证明了边界条件上的平铺的不可行，较为完整的解决了残缺两格棋盘的直线骨牌平铺问题。
+
+    本文在以往的文献基础上，通过拓展的循环染色法有助于解决更多残缺格子的直线骨牌覆盖问题，而在边界条件上的无穷递降的解法的构建，为各类骨牌覆盖问题的边界条件提供了一个例子以供拓展和使用。
 }
 % 中文关键词(每个关键词之间用“，”分开,最后一个关键词不打标点符号。)
-\ckeywords{本科毕业论文，染色方法，轮换，中山大学}
+\ckeywords{本科毕业论文，染色方法，分治，无穷递降，中山大学}
 
 \eabstract{
     % 英文摘要及关键词内容应与中文摘要及关键词内容相同。中英文摘要及其关键词各置一页内。
-    The content of the English abstract is the same as the Chinese abstract, 250-400 content words are appropriate. Start another line below the abstract to indicate English keywords (Keywords 3-5).
+    The domino tiling problem, also known as the board coverage problem, evolved from the ancient chess game, is a classic problem with a long history in combinatorics, and only the problem of incomplete straight domino coverage has been studied in the problem of straight domino coverage of defective chessboards.
+
+    This paper expands on the solution of the tiling problem of the incomplete one-grid chessboard, and uses the circular staining method to construct the solution of the rectilinear domino tiling problem of the incomplete two-square chessboard and gives examples.
+    Combined with mathematical induction and the idea of infinite descension, the problem of boundary case is reduced to a smaller scale problem to prove that tiling on boundary conditions is not feasible, and the problem of rectilinear domino tiling with a broken two-square chessboard is solved more completely.
+
+    Based on the previous literature, the extended cyclic staining method helps to solve the problem of linear domino coverage of more incomplete lattices, and the construction of an infinitely decreasing solution on the boundary condition provides an example for the boundary conditions of various domino cover problems for extension and use.
 }
 % 英文文关键词(每个关键词之间用,分开, 最后一个关键词不打标点符号。)
-\ekeywords{undergraduate thesis, Sun Yat-Sen University}
+\ekeywords{undergraduate thesis, stain, partition, infinite descending, Sun Yat-Sen University}
 

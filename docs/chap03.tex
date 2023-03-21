@@ -33,7 +33,8 @@
 	\end{table}
 \end{proof}
 
-因此根据\ref*{basic-theorem-2}，我们可以得把问题转化为：对于某个棋盘，他的两个缺陷可以组合成一个满足\ref*{basic-theorem-2}中条件的$i \times j$缺陷，那么该棋盘可以被平铺。
+因此根据\ref*{basic-theorem-2}，我们可以得把问题转化为：
+对于某个残缺两格的棋盘，如果他的两个缺陷可以组合成一个满足\ref*{basic-theorem-2}中条件的$i \times j$大小的缺陷，那么该棋盘可以被平铺。
 
 在图\ref*{fig:k-order-staining-1}的基础上，我们对棋盘进行两种染色，即
 
@@ -87,6 +88,12 @@
 记$P(i, j) = \left\{a, b\right\}$, 意味着在坐标为$(i, j)$在\ref*{fig:3-order-staining-1}和\ref*{fig:3-order-staining-2}分别染色为$a, b$，
 并据此按照以下规则重新染色得到\ref*{fig:3-order-staining-last}。
 
+\begin{itemize}
+	\item $P(i, j) = \left\{2, 2\right\}$染色为1, $P(i, j) = \left\{2, 2\right\}$染色为2
+	\item $P(i, j) = \left\{1, 2\right\}$染色为4, $P(i, j) = \left\{2, 1\right\}$染色为5
+	\item $P(i, j) = \left\{3, any\right\}$或$P(i, j) = \left\{any, 3\right\}$染色为0
+\end{itemize}
+
 \begin{table}[h]
 	\centering
 	\caption{3阶重染色}
@@ -126,7 +133,7 @@
 	\item 5的坐标: $(3k_{51} + 3, 3k_{52})$
 \end{itemize}
 
-在这里我们不妨假设$k_{51} \ge k_{41}$，（否则我们只需要左右翻转棋盘即可），则有以下2种情况：
+由于棋盘具有对称性，在这里我们不妨假设$k_{51} \ge k_{41}$，，因此会有以下2种情况：
 
 
 
@@ -190,7 +197,7 @@
 \end{itemize}
 
 
-在这里我们不妨假设$k_{21} \ge k_{11}$（否则只需要简单的上下翻转棋盘即可），则同样有以下两种情况：
+由于对称性，在这里我们不妨假设$k_{21} \ge k_{11}$，则同样有以下两种情况：
 
 \begin{table}[b]
 	\centering
@@ -214,7 +221,7 @@
 		\hline
 		\multicolumn{2}{|c|}{\multirow{3}{*}{$(3k_{21} - 3k_{11}) \times 1$}} & 2 & \multicolumn{4}{|c|}{$1 \times  (3k_{12} - 3k_{22})$}                                                                                 \\
 		\cline{3-7}
-		                                                                      &   & \multicolumn{3}{|c|}{\multirow{2}{*}{...}}            & \multicolumn{2}{|c|}{\multirow{3}{*}{$(3k_{21} - 3k_{11}) \times 1$}}         \\
+		                                                                      &   & \multicolumn{3}{c}{\multirow{2}{*}{...}}              & \multicolumn{2}{|c|}{\multirow{3}{*}{$(3k_{21} - 3k_{11}) \times 1$}}         \\
 		                                                                      &   &                                                       &                                                                       &  &  & \\
 		\cline{1-5}
 		\multicolumn{4}{|c|}{$1 \times  (3k_{12} - 3k_{22})$}                 & 1 &                                                       &                                                                               \\
@@ -290,7 +297,7 @@
 \end{table}
 
 
-在k>4的情况下，我们仍然假设$m \equiv 1 (mod k), n \equiv 2 (mod k)$，我们可以给出以下引理。
+在$k \ge 4$的情况下，我们仍然假设$m \equiv 1 (mod k), n \equiv 2 (mod k)$，我们可以给出以下引理。
 \begin{theorem}
 	\label{basic-theorem-3}
 	当$m \times n$的缺陷两格广义棋盘可被$1 \times k$大小的骨牌平铺时，若$k \ge 4$，则缺陷格子分别只可能在坐标$(kx_1 + 1, ky_1 + 1)$和$(kx_2 + 1, ky_2 + 2)$处。
@@ -306,7 +313,7 @@
 
 	挑选k阶染色中最经典的两种染色\ref{fig:k-order-staining-1}和\ref{fig:k-order-staining-2}，考虑最左上的$k \times k$大小的区域，做出以下区域划分：
 
-	\begin{table}[h]
+	\begin{table}[ht]
 		\centering
 		\begin{tabular}{|c|c|}
 			\hline
@@ -355,6 +362,6 @@
 	\label{fig:k-order-staining-last}
 \end{table}
 
-同k=3的情况，我们只需要考虑染色分别处于1和2的情况，此时可以完全的套用k=3的情况，且棘手情况也一样，为$k>3$时的边界情况，我们在下一节一起讨论。
+同$k=3$的情况，我们只需要考虑染色分别处于1和2的情况，此时可以完全的套用$k=3$的情况，且棘手情况也一样，为$k>3$时的边界情况，我们在下一节一起讨论。
 
 \clearpage
