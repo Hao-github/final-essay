@@ -50,8 +50,8 @@
 \RequirePackage{longtable}
 \RequirePackage[section]{placeins}
 % TODO: 伪代码要用中文吗？
-% \RequirePackage[onelanguage,linesnumbered,algochapter,ruled,vlined]{algorithm2e}
-\RequirePackage[chinese, onelanguage,linesnumbered,algochapter,ruled,vlined]{packages/algorithm2e}
+\RequirePackage[onelanguage,linesnumbered,algochapter,ruled,vlined]{algorithm2e}
+% \RequirePackage[chinese, onelanguage,linesnumbered,algochapter,ruled,vlined]{packages/algorithm2e}
 \RequirePackage{enumitem}
 \RequirePackage{bbm}
 \RequirePackage{bm}
@@ -251,7 +251,7 @@
             \ \vspace{0.5cm}
             \includegraphics[width=3cm]{image/template/sysu-logo.pdf} \\
             \vspace{\baselineskip}
-            {\zihao{-0}\textcolor{sysugreen}{\songti\textbf{\ 本科生毕业论文（设计）}}}
+            {\zihao{-0}\textcolor{sysugreen}{\songti\textbf{\ 本科生毕业论文 }}}
 
             \vspace{\baselineskip}
 
@@ -366,7 +366,7 @@
             \includegraphics[width=10cm]{image/template/SYSULogo} \\
             \songti
             \vspace{\baselineskip}
-            \zihao{-0}\textbf{本科生毕业论文（设计）} \\
+            \zihao{-0}\textbf{本科生毕业论文} \\
             \zihao{2}\textbf{\textrm{Undergraduate Graduation Thesis（Design）}} \\
             \vspace{2\baselineskip}
 
@@ -413,7 +413,7 @@
 %             \includegraphics[width=10cm]{image/SYSULogo} \\
 %             \songti
 %             \vspace{\baselineskip}
-%             \zihao{-0}\textbf{本科生毕业论文（设计）} \\
+%             \zihao{-0}\textbf{本科生毕业论文} \\
 %             \zihao{2}\textbf{\textrm{Undergraduate Graduation Thesis（Design）}} \\
 %             \vspace{2\baselineskip}
 
@@ -469,17 +469,17 @@
 
     \begin{center}
         \zihao{3}\fangsong\bfseries
-        表一\hspace{\ccwd}毕业论文（设计）开题报告 \\
+        表一\hspace{\ccwd}毕业论文开题报告 \\
         Form 1: Research Proposal of Graduation Thesis (Design)
     \end{center}
-    %\addcontentsline{toc}{chapter}{表一 毕业论文（设计）开题报告}
+    %\addcontentsline{toc}{chapter}{表一 毕业论文开题报告}
 
     \zihao{-4}\songti
     \begin{longtable}{|p{\textwidth}|}
         % 第一页出现的表头
         \hline
-        论文(设计)题目: \@ctitle                                                                                                            \\
-        Thesis (Design) Title: \@etitle
+        论文题目: \@ctitle                                                                                                            \\
+        Thesis Title: \@etitle
         \endfirsthead
 
         % 中间页出现的表头
@@ -567,7 +567,7 @@
 
     \begin{center}
         \zihao{3}\fangsong\bfseries
-        表二\hspace{\ccwd}毕业论文（设计）过程检查记录表 \\
+        表二\hspace{\ccwd}毕业论文过程检查记录表 \\
         Form 2: Process Check-up Form
     \end{center}
 
@@ -694,7 +694,7 @@
 
     \begin{center}
         \zihao{3}\fangsong\bfseries
-        表三\hspace{\ccwd}毕业论文（设计）答辩情况登记表 \\
+        表三\hspace{\ccwd}毕业论文答辩情况登记表 \\
         Form 3: Thesis Defense Performance Form
     \end{center}
 
@@ -707,7 +707,7 @@
         \textbf{Student Name}          & \@eauthor                     & {Major}       & \@emajor \\
         \hline
         % 第二行 论文题目 如果题目长度过长需要换成两行的版本。
-        \textbf{论文(设计)题目}        & \multicolumn{3}{c|}{\@ctitle}                            \\
+        \textbf{论文题目}        & \multicolumn{3}{c|}{\@ctitle}                            \\
         \textbf{Thesis（Design）Title} & \multicolumn{3}{c|}{\@etitle}                            \\
         % 需要两行英文题目的可以使用向下面两行
         % \textbf{Thesis（Design）Title} & \multicolumn{3}{|c|}{\@etitlefirst} \\
@@ -768,7 +768,7 @@
     % 本人所呈交的毕业论文，是在导师的指导下，独立进行研究工作所取得的成果，所有数据、图片资料均真实可靠。除文中已经注明引用的内容外，本论文不包含任何其他人或集体已经发表或撰写过的作品或成果。对本论文的研究作出重要贡献的个人和集体，均已在文中以明确的方式标明。本毕业论文的知识产权归属于培养单位。本人完全意识到本声明的法律结果由本人承担。
 
     % 新版的
-    本人郑重声明：所呈交的毕业论文（设计），是本人在导师的指导下，独立进行研究工作所取得的成果。除文中已经注明引用的内容外，本论文（设计）不包含任何其他个人或集体已经发表或撰写过的作品成果。对本论文（设计）的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本论文（设计）的知识产权归属于培养单位。本人完全意识到本声明的法律结果由本人承担。
+    本人郑重声明：所呈交的毕业论文，是本人在导师的指导下，独立进行研究工作所取得的成果。除文中已经注明引用的内容外，本论文不包含任何其他个人或集体已经发表或撰写过的作品成果。对本论文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本论文的知识产权归属于培养单位。本人完全意识到本声明的法律结果由本人承担。
 
     \vspace{2\baselineskip}
 
@@ -1021,10 +1021,10 @@
     \linespread{1.2}
     \begin{center}
         \zihao{3}\fangsong\bfseries
-        毕业论文(设计)成绩评定记录  \\
+        毕业论文成绩评定记录  \\
         Grading Sheet of the Graduation Thesis (Design)
     \end{center}
-    %\addcontentsline{toc}{chapter}{表一 毕业论文（设计）开题报告}
+    %\addcontentsline{toc}{chapter}{表一 毕业论文开题报告}
 
     \zihao{4}\songti
     \begin{longtable}{|p{0.9\textwidth}|}

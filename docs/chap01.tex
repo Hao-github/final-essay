@@ -6,7 +6,8 @@
 棋盘完全覆盖的方案数的研究才有价值。此外，研究棋盘完全覆盖问题的可解性，有助于对现实中的地砖覆盖等问题提供参考。
 
 \section{选题背景与意义}
-\label{sec:background}
+
+\subsection{选题背景}
 % What is the problem
 % why is it interesting and important
 % Why is it hards, why do naive approaches fails
@@ -29,7 +30,7 @@
 
 在本文中，我推广了染色法进行更多情况的排除，得到了在普遍条件下，缺陷两格棋盘是否可被平铺的证明，
 
-\section{国内外研究现状和相关工作}
+\subsection{国内外研究现状和相关应用}
 \label{sec:related_work}
 对棋盘覆盖问题的研究由来已久，冯跃峰证明了线型骨牌在完整矩形棋盘的完全覆盖充要条件；康庆德用染色法证明了残缺棋盘可被$1 \times 2$多米诺骨牌完全覆盖的充要条件；张媛则用轨道循环标号法证明了线型骨牌在残缺
 一格棋盘上的覆盖问题。
@@ -52,3 +53,29 @@
 
 第五章总结了问题的解，并展望以后的工作。
 
+\section{基础定义与符号表}
+
+在本文中，所有的符号与变量的取值范围都是整数集。
+
+\subsection{基础定义}
+
+
+\subsection{符号表}
+\begin{table}[htbp]
+    \centering
+    \caption{符号解释}
+    \begin{tabular}{lcr}
+        \toprule
+        符号                & 意义                         & 取值范围                          \\
+        \midrule
+        $m \times n$      & 棋盘大小为$m$行$n$列              & $[1, \inf) \times [1, \inf) $ \\
+        $1 \times k $     & 骨牌大小为$1$行$k$列              & $[3, min(m, n)]$              \\
+        $(i, j)$          & 第$i$行第$j$列的格子              & $[1, m] \times [1, n]$        \\
+        $Color(i, j)$     & 第$i$行第$j$列的格子所染的颜色         & $[1, k]$                      \\
+        $Color^k_p$       & $k$阶染色方案$p$                & $\mathbb{Z}$                  \\
+        $Color^k_p(i, j)$ & $(i, j)$在$Color^k_p$下所染的颜色 & $[1, k]$                      \\
+        $f(x)$            & 染色为$x$的格子的个数               & $[1, k]$                      \\
+        $g(x)$            & 标记为$x$的格子的个数               & $[1, m + n]$                  \\
+        \bottomrule
+    \end{tabular}
+\end{table}
