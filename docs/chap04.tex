@@ -61,7 +61,20 @@ $1$个横着的骨牌，$1$个竖着的骨牌，$m$个横着的骨牌，$1$个�
         \label{basicLemma42}
     \end{lemma}
 
-    假设对于长度小于$x - 1$的行都成立时，我们考虑长度为$x$的行，有
+    假设对于长度小于$x - 1$的行都成立时，则我们考虑长度为$wk$的一行两端各有$1_{\vert}$，$rk < x$，根据递推，我们有\ref*{basicEq43}。
+    \begin{equation}
+        x = ... \oplus 1_{\vert} \oplus  (wk) \oplus 1_{\vert} \oplus ... = ... \oplus 1_{\vert} \oplus  w * k_{-} \oplus 1_{\vert} \oplus ...
+        \label{basicEq43}
+    \end{equation}
+
+    由于对于随后的每一行，我们都需要这么铺设，连续$k$次后，就等价于铺设了$wk \times k$的区域，与$wk * 1_{\vert}$表现相同，有哪次我们能得到第三条转化公式。
+
+    \begin{lemma}
+        $x = ... \oplus 1_{\vert} \oplus  w * k_{-} \oplus 1_{\vert} = ... \oplus (wk + 2) * 1_{\vert} \oplus ...$
+        \label{basicLemma43}
+    \end{lemma}
+
+    我们考虑长度为$x$的行，有
     $$
         \begin{aligned}
                         & x = \sum_{i=0}^{a} (m_i * k_{-} \oplus n_i * 1_{\vert}) \oplus m_{a+1} * k_{-}                                                \\
@@ -144,7 +157,7 @@ $x_2 =  r \oplus  (t_2- 1 - u - u^{'}) * k_{-} \oplus 1_{\vert} \oplus  u^{'} * 
 由于第二行的所有$1_{\vert}$也会同时占用第$2$行到$k + 1$行的所有对应的格子。而$k \ge 3$ 所以在第一行和第二行的所有$1_{\vert}$在第三行的铺设中仍需替换为$r$，我们就写出了第三行的铺设表示\ref{thirdLine}。
 
 \begin{equation}
-    x_3 =  r \oplus  ((t_2- 1 - u - u^{'})k) \oplus r \oplus  (u^{'}k) \oplus (k - 2) * r \oplus 
+    x_3 =  r \oplus  ((t_2- 1 - u - u^{'})k) \oplus r \oplus  (u^{'}k) \oplus (k - 2) * r \oplus
     ((t - t_2 + u - u^{''})k) \oplus r \oplus  (u^{''}k) \oplus r
     \label{thirdLine}
 \end{equation}
