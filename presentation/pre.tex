@@ -10,31 +10,31 @@
 
 \usecolortheme[named=SeaGreen]{structure}
 
-\title{{\LaTeX} Template for SYSU Graduation Thesis}
+\title{在缺陷两格的棋盘上的直线骨牌平铺问题}
 
-\subtitle[申请中山大学工学学士学位论文答辩报告]{
+\subtitle[申请中山大学理学学士学位论文答辩报告]{
     ~\\
-    (申请中山大学工学学士学位论文答辩报告)
+    (申请中山大学工学理士学位论文答辩报告)
 }
 
-\author[王小明]{
+\author[卢皓斌]{
     \texorpdfstring{
-        学生：王小明\\
+        学生：卢皓斌\\
         ~\\
-        \href{mailto:yourname@mail2.sysu.edu.cn}{yourname@mail2.sysu.edu.cn}
+        \href{mailto:luhb5@mail2.sysu.edu.cn}{luhb5@mail2.sysu.edu.cn}
     }{PDF Bookmark Version}
 }
 
-\institute[中山大学~计算机学院（软件学院）]{
+\institute[中山大学~数学学院（珠海）]{
     \includegraphics[height=0.1\textheight]{../image/template/logo.png}
-    % \includegraphics[height=0.1\textheight]{../image/template/sysu-logo.pdf} % 这里可以放一排所在实验室的logo，可以去学院官网底部或实验室主页弄到，如 <http://nscc-gz.cn/_layout/themes/cs/images/logo0409.png>
+
 }
 
 \logo{\includegraphics[height=0.1\textheight]{../image/template/sysu-logo.pdf}} % 这个是每页都会出现的水印，可能会影响观感，自行决定放不放
 
 \date{
     %\today
-    二〇二一年五月
+    二〇二三年五月
 }
 
 \begin{document}
@@ -68,7 +68,7 @@
 
 \end{frame}
 
-\section{相关概念与面临的挑战}
+\section{规整棋盘规模}
 
 \subsection{图像搭配单页说明}
 
@@ -82,7 +82,7 @@
     \end{block}
 
     \begin{figure}
-        \includegraphics[width=0.618\textwidth]{../image/chap04/illustration/hole.pdf}
+        % \includegraphics[width=0.618\textwidth]{../image/chap04/illustration/hole.pdf}
         \caption{单张图像}
         \label{fig:hole}
     \end{figure}
@@ -99,15 +99,15 @@
     \end{block}
 
     \begin{figure} %文中的Grid-LSTM模型做的语义图像分割的例子
-        \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_000799.jpg}
-        \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_002094.jpg}
-        \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_004483.jpg}
-        \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_003194.jpg}
-        \\
-        \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_000799.pdf}
-        \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_002094.pdf}
-        \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_004483.pdf}
-        \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_003194.pdf}
+        % \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_000799.jpg}
+        % \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_002094.jpg}
+        % \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_004483.jpg}
+        % \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_003194.jpg}
+        % \\
+        % \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_000799.pdf}
+        % \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_002094.pdf}
+        % \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_004483.pdf}
+        % \includegraphics[width=.2\textwidth,height=.15\textwidth]{../image/chap04/example/2007_003194.pdf}
         \caption{并排的多张图像}
         \label{fig:multi-image-example1}
     \end{figure}
@@ -127,11 +127,11 @@
 
     \begin{figure}
         \begin{minipage}{0.49\textwidth}
-            \includegraphics[height=0.45\textheight]{../image/chap04/example/2007_004483.pdf}
+            % \includegraphics[height=0.45\textheight]{../image/chap04/example/2007_004483.pdf}
             \caption{一}
         \end{minipage}
         \begin{minipage}{0.49\textwidth}
-            \includegraphics[height=0.45\textheight]{../image/chap04/example/2007_003194.pdf}
+            % \includegraphics[height=0.45\textheight]{../image/chap04/example/2007_003194.pdf}
             \caption{二}
         \end{minipage}
     \end{figure}
@@ -143,14 +143,14 @@
 \begin{frame}
 
     \begin{figure}
-        \includegraphics[width=0.9\textwidth]{../image/chap03/overleaf-example.jpg}
+        % \includegraphics[width=0.9\textwidth]{../image/chap03/overleaf-example.jpg}
         \caption{Overleaf使用例子，这里的描述可以长一些}
         \label{fig:overleaf-example}
     \end{figure}
 
 \end{frame}
 
-\section{算法设计}
+\section{染色法处理}
 
 \subsection{图像搭配单页说明}
 
@@ -168,7 +168,7 @@
 
 \end{frame}
 
-\section{实验与结果}
+\section{无穷递降/分治法处理}
 
 \begin{frame}
 
@@ -181,10 +181,10 @@
     \begin{table}
         \begin{tabular}{ccc}
             \hline
-            姓名       & 学号 & 性别   \\
+            姓名         & 学号  & 性别     \\
             \hline
-            Steve Jobs & 001  & Male   \\
-            Bill Gates & 002  & Female \\
+            Steve Jobs & 001 & Male   \\
+            Bill Gates & 002 & Female \\
             \hline
         \end{tabular}
         \caption{表格示例，乱写的}
@@ -195,29 +195,33 @@
 
 \section{总结与展望}
 
-\subsection{其他块语法示例}
+\subsection{}
 
 \begin{frame}
-
-    \begin{block}{带标号的条目\footnote{引用一}}
+    \begin{block}{问题的解}
         \begin{enumerate}
-            \item 条目一，每一行字不要太密
-            \item 条目二
+            \item 对于$m \times n$的缺陷两格广义棋盘，骨牌大小$1 \times k$，其中$k \ge 3$。满足$m \equiv 2 (mod k), n \equiv 1 (mod k)$。
+            \item 当$i_1 = i_2 \notin \left\{1, m\right\}$，缺陷格子坐标$(i_1, j_1)$和$(i_2, j_2)$满足$i_1 \equiv i_2 \equiv 1 (mod k), j_1 + 1 \equiv j_2 \equiv 2 (mod k)$时，可完全覆盖。
+            \item 当$i_1 = i_2 \in \left\{1, m\right\}$，满足$j_2 > j_1, m \ge 2k + 2, n \ge 2k + 1$的条件时，棋盘可完全覆盖。
+            \item 当$k = 3$时，缺陷格子坐标$(i_1, j_1)$和$(i_2, j_2)$满足$i_1 + 1\equiv i_2 \equiv 0 (mod 3), j_1 \equiv j_2 \equiv 0 (mod 3)$，棋盘也可以被平铺。
+            \item 对于其余情况，棋盘都不可被平铺。
         \end{enumerate}
     \end{block}
+\end{frame}
+% \begin{alertblock}{重要理论}
+%     \begin{itemize}
+%         \item 条目一\footnote{引用二}和\alert{高亮字色}
+%     \end{itemize}
+% \end{alertblock}
 
-    \begin{alertblock}{重要理论}
+\begin{frame}
+    \begin{block}{展望与其他研究方向}
         \begin{itemize}
-            \item 条目一\footnote{引用二}和\alert{高亮字色}
+            \item 对于$m \times n$的缺陷$z$格（$z > 2$）的广义棋盘的直线骨牌的平铺问题。
+            \item 对于$m \times n$的缺陷两格的广义棋盘的各类L型骨牌的平铺问题。
+            \item 对于$m \times n \times k$的立体棋盘中，直线骨牌的平铺问题。
         \end{itemize}
-    \end{alertblock}
-
-    \begin{examples}
-        \begin{itemize}
-            \item 举个栗子
-        \end{itemize}
-    \end{examples}
-
+    \end{block}
 \end{frame}
 
 \section{Q \& A}
