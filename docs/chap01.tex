@@ -8,12 +8,7 @@
 \section{选题背景与意义}
 
 \subsection{选题背景}
-% What is the problem
-% why is it interesting and important
-% Why is it hards, why do naive approaches fails
-% why hasn't it been solved before
-% what are the key components of my approach and results, also include any specific limitations，do not repeat the abstract
-%contribution
+
 我们称某$1 \times k$骨牌能完全覆盖某缺陷棋盘，当且仅当以下条件满足：
 \begin{enumerate}
     \item 每块骨牌能够连续覆盖棋盘上同一行或者同一列的相邻$k$格
@@ -58,6 +53,20 @@
 在本文中，所有的符号与变量的取值范围都是整数集。
 
 \subsection{基础定义}
+
+\begin{definition}
+    我们定义一个$m \times n$的广义棋盘的某个$k$阶染色为，规定第一行第$k$列染色为$(j - 1) \% k + 1$后，其余格子能满足
+    每连续$k$个横着的或者竖着的格子中，有且只有一个$1, 2, ... , k$，这样的排布。
+\end{definition}
+
+\begin{definition}
+    我们定义一个$m \times n$的广义棋盘的两个$k$阶染色不同，当且仅当在第一行的染色完全相同时，剩余的格子中存在染色不同的格子。
+\end{definition}
+
+由上述定义，我们能简单的得到一个引理
+\begin{lemma}
+    对于一个$m \times n$的广义棋盘的某个$k$阶染色，任意交换其中的两行或两列后，新的棋盘仍然是一个合法的$k$阶染色。
+\end{lemma}
 
 
 \subsection{符号表}

@@ -99,17 +99,16 @@ $1$个横着的骨牌，$1$个竖着的骨牌，$m$个横着的骨牌，$1$个�
     \label{firstLine}
 \end{equation}
 
-$$
+\begin{equation}
     \left\{
     \begin{aligned}
         t_1k + 1         & = (t_1 - u) * k_{-}  \oplus 1_{\vert} \oplus u * k_{-}                     \\
         (t_2 - t_1)k - 2 & = (t_2 - t_1 - 1 - u) * k_{-}  \oplus (k - 2) * 1_{\vert} \oplus u * k_{-} \\
         t_2k + 1         & = (t - t_2 - u) * k_{-}  \oplus 1_{\vert} \oplus u * k_{-}
-        \label{first-difficult-sep}
     \end{aligned}
     \right.
-$$
-
+    \label{first-difficult-sep}
+\end{equation}
 
 由定理\ref*{basic-theorem-4}，我们得到式子\ref*{first-difficult-sep}，因此第一行的铺设为：
 
@@ -140,19 +139,20 @@ $$
 \end{equation}
 
 
-$$
+\begin{equation}
     \left\{
     \begin{aligned}
         (t_2 - 1 - u)k + 1 & = (t_2 - 1 - u - u^{'}) * k_{-} \oplus 1_{\vert} \oplus u^{'} *  k_{-}     \\
         (t - t_2 + u)k + 1 & = (t - t_2 + u - u^{''}) *  k_{-} \oplus 1_{\vert} \oplus  u^{''} *  k_{-}
-        \label{second-difficult-sep}
     \end{aligned}
     \right.
-$$
+    \label{second-difficult-sep}
+\end{equation}
 
 由定理\ref*{basic-theorem-4}，有式子\ref*{second-difficult-sep}，因此第二行可以分解为
 
-$x_2 =  r \oplus  (t_2- 1 - u - u^{'}) * k_{-} \oplus 1_{\vert} \oplus  u^{'} * k_{-}  \oplus (k - 2) * r \oplus (t - t_2 + u - u^{''}) * k_{-} \oplus 1_{\vert} \oplus  u^{''} * k_{-} \oplus r$
+$x_2 =  r \oplus  (t_2- 1 - u - u^{'}) * k_{-} \oplus 1_{\vert} \oplus  u^{'} * k_{-}  \oplus (k - 2) * r \oplus
+    (t - t_2 + u - u^{''}) * k_{-} \oplus 1_{\vert} \oplus  u^{''} * k_{-} \oplus r$
 
 由于第二行的所有$1_{\vert}$也会同时占用第$2$行到$k + 1$行的所有对应的格子。而$k \ge 3$ 所以在第一行和第二行的所有$1_{\vert}$在第三行的铺设中仍需替换为$r$，我们就写出了第三行的铺设表示\ref{thirdLine}。
 
@@ -164,17 +164,17 @@ $x_2 =  r \oplus  (t_2- 1 - u - u^{'}) * k_{-} \oplus 1_{\vert} \oplus  u^{'} * 
 
 由定理\ref*{basic-theorem-4}，有\ref*{last-difficult-sep}：
 
-$$
+\begin{equation}
     \left\{
     \begin{aligned}
         (t_2 - 1 - u - u^{'})k  & = (t_2- 1 - u - u^{'}) * k_{-}   \\
         (t - t_2 + u - u^{''})k & = (t - t_2 + u - u^{''}) * k_{-} \\
         u^{'}k                  & = u^{'} * k_{-}                  \\
         u^{''}k                 & = u^{''} * k_{-}
-        \label{last-difficult-sep}
     \end{aligned}
     \right.
-$$
+    \label{last-difficult-sep}
+\end{equation}
 
 故第三行已经不需要铺设任何竖着的骨牌，对于第$k^{'}\in [3, k]$行，我们全部像可以第三行一样考虑和铺设。
 

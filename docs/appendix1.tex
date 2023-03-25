@@ -3,17 +3,23 @@
 \section{\texorpdfstring{$k_{12} - k_{22} = 1$}的区域划分}
 
 \begin{table}[h]
-    \begin{tabular}{|ccccclcl|}
-    \hline
-    \multicolumn{2}{|c|}{\multirow{3}{*}{}}                          & \multicolumn{6}{c|}{}                                                                                                                                 \\ \cline{3-8} 
-    \multicolumn{2}{|c|}{}                                           & \multicolumn{1}{c|}{\multirow{3}{*}{}} & \multicolumn{3}{c|}{\multirow{2}{*}{}}                              & \multicolumn{2}{c|}{\multirow{6}{*}{}} \\
-    \multicolumn{2}{|c|}{}                                           & \multicolumn{1}{c|}{}                  & \multicolumn{3}{c|}{}                                               & \multicolumn{2}{c|}{}                  \\ \cline{1-2} \cline{4-6}
-    \multicolumn{1}{|c|}{\multirow{3}{*}{}} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{}                  & \multicolumn{1}{c|}{1}     & \multicolumn{2}{c|}{\multirow{3}{*}{}} & \multicolumn{2}{c|}{}                  \\ \cline{2-4}
-    \multicolumn{1}{|c|}{}                  & \multicolumn{3}{c|}{\multirow{2}{*}{}}                                                       & \multicolumn{2}{c|}{}                  & \multicolumn{2}{c|}{}                  \\
-    \multicolumn{1}{|c|}{}                  & \multicolumn{3}{c|}{}                                                                        & \multicolumn{2}{c|}{}                  & \multicolumn{2}{c|}{}                  \\ \cline{1-6}
-    \multicolumn{6}{|c|}{}                                                                                                                                                          & \multicolumn{2}{c|}{}                  \\ \hline
+    \centering
+    \begin{tabular}{|cccccccc|}
+        \hline
+        \multicolumn{2}{|c|}{\multirow{3}{*}{$3 \times 2$}} & \multicolumn{6}{c|}{$1 \times 6$}                                                                                                                                                                                                         \\
+        \cline{3-8}
+        \multicolumn{2}{|c|}{}                              & \multicolumn{1}{c|}{\multirow{3}{*}{$3 \times 1$}} & \multicolumn{3}{c|}{\multirow{2}{*}{$2 \times 3$}} & \multicolumn{2}{c|}{\multirow{6}{*}{$6 \times 1$}}                                                                              \\
+        \multicolumn{2}{|c|}{}                              & \multicolumn{1}{c|}{}                              & \multicolumn{3}{c|}{}                              & \multicolumn{2}{c|}{}                                                                                                           \\
+        \cline{1-2} \cline{4-6}
+        \multicolumn{1}{|c|}{\multirow{3}{*}{$3 \times 1$}} & \multicolumn{1}{c|}{2}                             & \multicolumn{1}{c|}{}                              & \multicolumn{1}{c|}{1}                             & \multicolumn{2}{c|}{\multirow{3}{*}{$3 \times 1$}} & \multicolumn{2}{c|}{} \\
+        \cline{2-4}
+        \multicolumn{1}{|c|}{}                              & \multicolumn{3}{c|}{\multirow{2}{*}{$2 \times 3$}} & \multicolumn{2}{c|}{}                              & \multicolumn{2}{c|}{}                                                                                                           \\
+        \multicolumn{1}{|c|}{}                              & \multicolumn{3}{c|}{}                              & \multicolumn{2}{c|}{}                              & \multicolumn{2}{c|}{}                                                                                                           \\
+        \cline{1-6}
+        \multicolumn{6}{|c|}{$1 \times 6$}                  & \multicolumn{2}{c|}{}                                                                                                                                                                                                                     \\
+        \hline
     \end{tabular}
-    \end{table}
+\end{table}
 
 
 \section{\texorpdfstring{$k_{12} - k_{22} > 1$}的区域划分}
@@ -23,15 +29,21 @@
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table}[h]
-    \begin{tabular}{|ccclclcc|}
+    \centering
+    \begin{tabular}{|cccccccc|}
         \hline
-        \multicolumn{2}{|c|}{\multirow{3}{*}{}} & \multicolumn{6}{c|}{}                                                                                                                               \\ \cline{3-8}
-        \multicolumn{2}{|c|}{}                  & \multicolumn{2}{c|}{\multirow{3}{*}{}} & \multicolumn{3}{c|}{\multirow{2}{*}{}} & \multirow{3}{*}{}                                                 \\
-        \multicolumn{2}{|c|}{}                  & \multicolumn{2}{c|}{}                  & \multicolumn{3}{c|}{}                  &                                                                   \\ \cline{1-2} \cline{5-7}
-        \multicolumn{1}{|c|}{\multirow{3}{*}{}} & \multicolumn{1}{c|}{2}                 & \multicolumn{2}{c|}{}                  & \multicolumn{2}{c|}{\multirow{3}{*}{}} & \multicolumn{1}{c|}{1} & \\ \cline{2-4} \cline{7-8}
-        \multicolumn{1}{|c|}{}                  & \multicolumn{3}{c|}{\multirow{2}{*}{}} & \multicolumn{2}{c|}{}                  & \multicolumn{2}{c|}{\multirow{3}{*}{}}                            \\
-        \multicolumn{1}{|c|}{}                  & \multicolumn{3}{c|}{}                  & \multicolumn{2}{c|}{}                  & \multicolumn{2}{c|}{}                                             \\ \cline{1-6}
-        \multicolumn{6}{|c|}{}                  & \multicolumn{2}{c|}{}                                                                                                                               \\ \hline
+        \multicolumn{2}{|c|}{\multirow{3}{*}{$3 \times 2$}} & \multicolumn{6}{c|}{$1 \times (3k_{12} - 3k_{22})$}                                                                                                                                                                                \\
+        \cline{3-8}
+        \multicolumn{2}{|c|}{}                              & \multicolumn{2}{c|}{\multirow{3}{*}{$3 \times 2$}} & \multicolumn{3}{c|}{\multirow{2}{*}{$2 \times (3k_{12} - 3k_{22} - 3)$}} & \multirow{3}{*}{$3 \times 1$}                                                                      \\
+        \multicolumn{2}{|c|}{}                              & \multicolumn{2}{c|}{}                              & \multicolumn{3}{c|}{}                                                  &                                                                                                    \\
+        \cline{1-2} \cline{5-7}
+        \multicolumn{1}{|c|}{\multirow{3}{*}{$3 \times 1$}} & \multicolumn{1}{c|}{2}                             & \multicolumn{2}{c|}{}                                                  & \multicolumn{2}{c|}{\multirow{3}{*}{$3 \times (3k_{12} - 3k_{22} - 4)$}} & \multicolumn{1}{c|}{1} & \\
+        \cline{2-4} \cline{7-8}
+        \multicolumn{1}{|c|}{}                              & \multicolumn{3}{c|}{\multirow{2}{*}{$2 \times 3$}} & \multicolumn{2}{c|}{}                                                  & \multicolumn{2}{c|}{\multirow{3}{*}{$3 \times 2$}}                                                 \\
+        \multicolumn{1}{|c|}{}                              & \multicolumn{3}{c|}{}                              & \multicolumn{2}{c|}{}                                                  & \multicolumn{2}{c|}{}                                                                              \\
+        \cline{1-6}
+        \multicolumn{6}{|c|}{$1 \times  (3k_{12} - 3k_{22})$} & \multicolumn{2}{c|}{}                                                                                                                                                                                                            \\
+        \hline
     \end{tabular}
 \end{table}
 \endinput

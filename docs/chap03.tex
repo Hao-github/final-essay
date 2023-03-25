@@ -2,7 +2,7 @@
 
 \section{骨牌大小k = 3时的情况}
 由\ref*{basic-theorem-1}有，此时棋盘的大小只可能为$m \times n, m \equiv 1 (mod 3), n \equiv 2 (mod 3)$，
-不妨假设缺陷格子分别为$q_1 = (i_1, j_1), q_2 = (i_2, j_2)$。
+不妨假设缺陷格子分别为$(i_1, j_1), (i_2, j_2)$。
 
 在这里我们给出一个定理，来辅助我们之后的证明。
 
@@ -128,8 +128,8 @@
 由图\ref{fig:3-order-staining-last}，我们可以简单的得到染色为4和5所对应的格子的坐标，
 
 \begin{itemize}
-	\item $q_1 = Color^3_3(3k_{41} + 2, 3k_{42}) = 4$
-	\item $q_2 = Color^3_3(3k_{51} + 3, 3k_{52}) = 5$
+	\item $Color^3_3(i_1, j_1) = Color^3_3(3k_{41} + 2, 3k_{42}) = 4$
+	\item $Color^3_3(i_2, j_2) = Color^3_3(3k_{51} + 3, 3k_{52}) = 5$
 \end{itemize}
 
 由于棋盘具有对称性，在这里我们不妨假设$k_{51} \ge k_{41}$，则有以下2种情况：
@@ -188,8 +188,8 @@
 同在染色中处于4和5的情况，我们可以写出染色为1和2所对应的格子坐标。
 
 \begin{itemize}
-	\item $q_1 = Color^3_3(3k_{11} + 1, 3k_{12} + 1) = 1$
-	\item $q_2 = Color^3_3(3k_{21} + 1, 3k_{22} + 2) = 2$
+	\item $Color^3_3(i_1, j_1) = Color^3_3(3k_{11} + 1, 3k_{12} + 1) = 1$
+	\item $Color^3_3(i_2, j_2) = Color^3_3(3k_{21} + 1, 3k_{22} + 2) = 2$
 \end{itemize}
 
 
@@ -227,20 +227,20 @@
 \end{table}
 
 \begin{itemize}
-	\item 当$k_{22} \ge k_{12}$时，有缺陷拼接图\ref*{fig:1-2-painting}，\\
+	\item 若$k_{22} \ge k_{12}$，有缺陷拼接图\ref*{fig:1-2-painting}，\\
 	      $Corner_C = \left\{(3k_{11} + 1, 3k_{12} + 1), (3k_{21} + 1, 3k_{22} + 2)\right\}$。
-	\item 当$k_{22} < k_{12}$时，有以下分类：
+	\item 若$k_{22} < k_{12}$，有以下分类：
 	      \begin{itemize}
-		      \item 当$i_1 \neq i_2$时，有缺陷拼接图\ref*{fig:2-1-painting-1}，\\
+		      \item 若$i_1 \neq i_2$，有缺陷拼接图\ref*{fig:2-1-painting-1}，\\
 		            $Corner_C = \left\{(3k_{21} + 1, 3k_{22} + 1), (3k_{11} + 1, 3k_{22} + 2)\right\}$。
-		      \item 当$i_1 = i_2 \notin \left\{1, m\right\}$时，有$m \ge 7$，当$n = 5$时，穷举得到无解；当$n \ge 8$时：
+		      \item 若$i_1 = i_2 \notin \left\{1, m\right\}$，有$m \ge 7$，当$n = 5$时，穷举得到无解；当$n \ge 8$时：
 		            \begin{itemize}
-			            \item 当$k_{12} - k_{22} = 1$时，存在缺陷拼接，\\
-			                  $Corner_C = \left\{(3k_{21} - 2, 3k_{22} + 1), (3k_{11} + 1, 3k_{22} + 2)\right\}$，具体缺陷拼接图见附录。
-			            \item 当$k_{12} - k_{22} > 1$时，存在缺陷拼接，\\
-			                  $Corner_C = \left\{(3k_{21} - 2, 3k_{22} + 1), (3k_{11} + 4, 3k_{22} + 5)\right\}$，具体缺陷拼接图见附录。
+			            \item 若$k_{12} - k_{22} = 1$，存在缺陷拼接图见附录，此时\\
+			                  $Corner_C = \left\{(3k_{21} - 2, 3k_{22} + 1), (3k_{11} + 1, 3k_{22} + 2)\right\}$。
+			            \item 若$k_{12} - k_{22} > 1$，存在缺陷拼接图见附录，此时\\
+			                  $Corner_C = \left\{(3k_{21} - 2, 3k_{22} + 1), (3k_{11} + 4, 3k_{22} + 5)\right\}$。
 		            \end{itemize}
-		      \item 当$i_1 = i_2 \in \left\{1, m\right\}$时，我们称为棘手情况，把它放在下一节讨论。
+		      \item 若$i_1 = i_2 \in \left\{1, m\right\}$时，我们称为棘手情况，把它放在下一节讨论。
 	      \end{itemize}
 \end{itemize}
 
@@ -320,9 +320,14 @@
 \end{theorem}
 \begin{proof}
 	我们能够很轻易的得到$f(1) = f(2) = f(x), x \neq 1, x \neq 2$，
-	缺陷格子只能落在在所有染色组合中均被染色为1或染色2的格子，即$Color^k_pq_1 \in \left\{1, 2\right\}, Color^k_pq_2 \in \left\{1, 2\right\} \forall p$，
+	缺陷格子只能落在在所有染色组合中均被染色为1或染色2的格子，
+	即\ref{basic-theorem-3-example}
+	\begin{equation}
+		Color^k_p(i_1, j_1) \in \left\{1, 2\right\}, Color^k_p(i_2, j_2) \in \left\{1, 2\right\} \forall p
+		\label{basic-theorem-3-example}
+	\end{equation}
 	而$Color^k_p(kx_1 + 1, ky_1 + 1) = 1, Color^k_p(kx_2 + 1, ky_2 + 2) = 2, \forall p$，
-	因此当$q_1 = (kx_1 + 1, ky_1 + 1), q_2 = (kx_2 + 1, ky_2 + 2)$时，棋盘可能可以被平铺。
+	因此当$(i_1, j_1) = (kx_1 + 1, ky_1 + 1), (i_2, j_2) = (kx_2 + 1, ky_2 + 2)$时，棋盘可能可以被平铺。
 
 	接下来我们证明，当$(i, j) \neq (kx_1 + 1, ky_1 + 1), (i, j) \neq (kx_2 + 1, ky_2 + 2)$时，$\exists p, s.t. Color^k_p(i, j) \notin \left\{1, 2\right\}$。
 
